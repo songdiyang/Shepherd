@@ -1,0 +1,76 @@
+{
+  "timestamp": "2026-06-09T07:35:32.848Z",
+  "results": [
+    {
+      "name": "Delegate Feasibility",
+      "iterations": 1000,
+      "avg": "0.008",
+      "min": "0.002",
+      "max": "0.475",
+      "p50": "0.010",
+      "p95": "0.013",
+      "p99": "0.025",
+      "throughput": "132657"
+    },
+    {
+      "name": "Grass Efficiency",
+      "iterations": 1000,
+      "avg": "0.003",
+      "min": "0.001",
+      "max": "0.538",
+      "p50": "0.002",
+      "p95": "0.003",
+      "p99": "0.026",
+      "throughput": "320831"
+    },
+    {
+      "name": "Complexity Calc",
+      "iterations": 10000,
+      "avg": "0.002",
+      "min": "0.001",
+      "max": "0.290",
+      "p50": "0.001",
+      "p95": "0.004",
+      "p99": "0.004",
+      "throughput": "582818"
+    },
+    {
+      "name": "Task Matching",
+      "iterations": 1000,
+      "avg": "0.091",
+      "min": "0.063",
+      "max": "0.520",
+      "p50": "0.080",
+      "p95": "0.181",
+      "p99": "0.235",
+      "throughput": "10966"
+    },
+    {
+      "name": "Large Scale Assignment",
+      "iterations": 100,
+      "avg": "148.090",
+      "min": "144.296",
+      "max": "190.754",
+      "p50": "146.129",
+      "p95": "161.324",
+      "p99": "190.754",
+      "throughput": "7"
+    },
+    {
+      "name": "Sheep Status Update",
+      "iterations": 1000,
+      "avg": "0.036",
+      "min": "0.030",
+      "max": "1.479",
+      "p50": "0.032",
+      "p95": "0.045",
+      "p99": "0.056",
+      "throughput": "27439"
+    }
+  ],
+  "summary": {
+    "totalTests": 6,
+    "totalIterations": 14100,
+    "avgThroughput": "179120"
+  }
+}

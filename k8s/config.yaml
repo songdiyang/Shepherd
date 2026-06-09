@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: shepherd-secrets
+type: Opaque
+stringData:
+  mongodb-uri: "mongodb://mongodb:27017/shepherd"
+  mongodb-root-username: "admin"
+  mongodb-root-password: "change-me-in-production"
+  redis-url: "redis://redis:6379"
+  jwt-secret: "change-me-in-production-use-256-bit-key"
+  llm-api-key: "your-llm-api-key-here"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shepherd-config
+data:
+  LOG_LEVEL: "info"
+  NODE_ENV: "production"
+  PORT: "3000"
+  LLM_PROVIDER: "anthropic"
+  LLM_MODEL: "claude-3-sonnet"
+  LLM_MAX_TOKENS: "4096"
+  LLM_TEMPERATURE: "0.7"
+  RATE_LIMIT_WINDOW_MS: "60000"
+  RATE_LIMIT_MAX_REQUESTS: "100"
+  REQUEST_TIMEOUT_MS: "30000"
+  AGENT_EXECUTION_TIMEOUT_MS: "300000"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: shepherd-sa
+automountServiceAccountToken: false
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: shepherd-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "configmaps"]
+  verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: shepherd-role-binding
+subjects:
+- kind: ServiceAccount
+  name: shepherd-sa
+roleRef:
+  kind: Role
+  name: shepherd-role
+  apiGroup: rbac.authorization.k8s.io

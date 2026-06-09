@@ -1,0 +1,65 @@
+{
+  "project": "大规模数据处理",
+  "totalTasks": 51,
+  "completedTasks": 0,
+  "completionRate": 0,
+  "averageQuality": null,
+  "totalDataChunks": 100,
+  "processedChunks": 0,
+  "processingRate": 0,
+  "sheep": [
+    {
+      "name": "AI ETL Engineer",
+      "type": "AI",
+      "grass": 0,
+      "reputation": 0
+    },
+    {
+      "name": "AI Data Cleaner",
+      "type": "AI",
+      "grass": 0,
+      "reputation": 0
+    },
+    {
+      "name": "AI Data Analyst",
+      "type": "AI",
+      "grass": 0,
+      "reputation": 0
+    },
+    {
+      "name": "AI Visualization",
+      "type": "AI",
+      "grass": 0,
+      "reputation": 0
+    },
+    {
+      "name": "Human Data Scientist",
+      "type": "HUMAN",
+      "grass": 0,
+      "reputation": 0
+    },
+    {
+      "name": "Human QA Engineer",
+      "type": "HUMAN",
+      "grass": 0,
+      "reputation": 0
+    }
+  ],
+  "dogs": [
+    {
+      "name": "AI Pipeline Manager",
+      "type": "AI",
+      "flockSize": 2
+    },
+    {
+      "name": "Human Quality Lead",
+      "type": "HUMAN",
+      "flockSize": 3
+    },
+    {
+      "name": "AI Security Guard",
+      "type": "AI",
+      "flockSize": 1
+    }
+  ]
+}

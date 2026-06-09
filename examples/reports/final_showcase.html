@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>牧羊人架构框架 - 项目展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            background: #0f0f1a;
+            color: #e0e0ff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 80px 20px 60px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(118, 75, 162, 0.15) 0%, transparent 50%);
+            animation: heroFloat 15s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes heroFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(2deg); }
+            66% { transform: translate(-20px, 20px) rotate(-1deg); }
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 30px;
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+            line-height: 1.1;
+        }
+        .hero-subtitle {
+            font-size: 1.3em;
+            color: rgba(224, 224, 255, 0.7);
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeInUp 1.2s ease-out 0.3s both;
+        }
+        .hero-stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 16px;
+            padding: 25px 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        .hero-stat-card:hover::before {
+            left: 100%;
+        }
+        .hero-stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+        }
+        .hero-stat-value {
+            font-size: 2.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+        .hero-stat-label {
+            font-size: 0.9em;
+            color: rgba(224, 224, 255, 0.6);
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+        .hero-stat-change {
+            font-size: 0.8em;
+            color: #4ade80;
+            margin-top: 5px;
+        }
+        /* Section Styles */
+        .section {
+            margin: 50px 0;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title span {
+            font-size: 1.3em;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.5), transparent);
+        }
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
+        }
+        /* Experiment Cards */
+        .experiment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .experiment-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .experiment-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .experiment-card:hover::after {
+            transform: scaleX(1);
+        }
+        .experiment-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(102, 126, 234, 0.4);
+        }
+        .experiment-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .experiment-card h3 {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 10px;
+        }
+        .experiment-card .score {
+            font-size: 2.8em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin: 15px 0;
+        }
+        .experiment-card .winner {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(102, 126, 234, 0.15);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: #a5b4fc;
+        }
+        /* Progress Bars */
+        .progress-container {
+            margin: 15px 0;
+        }
+        .progress-row {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            gap: 15px;
+        }
+        .progress-label {
+            width: 100px;
+            font-weight: 600;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .progress-bar-wrapper {
+            flex: 1;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            font-weight: 700;
+            font-size: 0.9em;
+            color: white;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            animation: progressGrow 1.5s ease-out both;
+        }
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+        @keyframes progressGrow {
+            from { width: 0; opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .data-table th {
+            padding: 14px 16px;
+            text-align: left;
+            background: rgba(102, 126, 234, 0.1);
+            color: #a5b4fc;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+        }
+        .data-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .data-table tr:hover td {
+            background: rgba(102, 126, 234, 0.05);
+        }
+        .rank-1 { color: #FFD700; font-weight: 700; }
+        .rank-2 { color: #C0C0C0; font-weight: 700; }
+        .rank-3 { color: #CD7F32; font-weight: 700; }
+        .highlight-score {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        /* Findings */
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .finding-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        .finding-card:hover {
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+        }
+        .finding-card .number {
+            font-size: 2em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .finding-card h4 {
+            color: #fff;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .finding-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        /* Lists */
+        .styled-list {
+            list-style: none;
+            padding: 0;
+        }
+        .styled-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .styled-list li:last-child {
+            border-bottom: none;
+        }
+        .styled-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        .styled-list li:hover {
+            color: #fff;
+        }
+        .styled-list .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+        .tag-doc { background: rgba(102, 126, 234, 0.15); color: #a5b4fc; }
+        .tag-script { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
+        .tag-tool { background: rgba(250, 204, 21, 0.15); color: #facc15; }
+        /* Next Steps */
+        .steps-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .steps-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+        }
+        .step-item {
+            position: relative;
+            padding: 20px 0;
+            padding-left: 25px;
+        }
+        .step-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 24px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: 3px solid #0f0f1a;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+        .step-item h4 {
+            color: #fff;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        .step-item p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        .step-item .step-status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .status-pending { background: rgba(250, 204, 21, 0.15); color: #facc15; }
+        .status-active { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
+        .status-done { background: rgba(102, 126, 234, 0.15); color: #a5b4fc; }
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-in {
+            animation: fadeInUp 0.8s ease-out both;
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 50px;
+        }
+        .footer .version-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: #a5b4fc;
+            margin-top: 10px;
+        }
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f0f1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 4px;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2em; }
+            .hero-subtitle { font-size: 1em; }
+            .section-title { font-size: 1.4em; }
+            .experiment-card .score { font-size: 2em; }
+            .card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-badge">🐑 牧羊人架构框架 v1.0.0-alpha</div>
+        <h1>Shepherd Architecture<br>Framework</h1>
+        <p class="hero-subtitle">AI驱动的项目管理架构框架 | 综合实验与验证报告</p>
+        <div class="hero-stats">
+            <div class="hero-stat-card">
+                <div class="hero-stat-value">128</div>
+                <div class="hero-stat-label">项目文件</div>
+                <div class="hero-stat-change">↑ 156%</div>
+            </div>
+            <div class="hero-stat-card">
+                <div class="hero-stat-value">14,756</div>
+                <div class="hero-stat-label">代码行数</div>
+                <div class="hero-stat-change">持续增长</div>
+            </div>
+            <div class="hero-stat-card">
+                <div class="hero-stat-value">39</div>
+                <div class="hero-stat-label">技术文档</div>
+                <div class="hero-stat-change">↑ 新增</div>
+            </div>
+            <div class="hero-stat-card">
+                <div class="hero-stat-value">4</div>
+                <div class="hero-stat-label">验证实验</div>
+                <div class="hero-stat-change">全部完成</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 实验结果 -->
+        <div class="section" style="animation-delay: 0.2s">
+            <h2 class="section-title"><span>🏆</span> 实验结果汇总</h2>
+            <div class="experiment-grid">
+                <div class="experiment-card">
+                    <div class="icon">🎮</div>
+                    <h3>俄罗斯方块</h3>
+                    <div class="score">81.1</div>
+                    <div class="winner">🥇 Shepherd 模式</div>
+                </div>
+                <div class="experiment-card">
+                    <div class="icon">💻</div>
+                    <h3>计算机设计</h3>
+                    <div class="score">5/5</div>
+                    <div class="winner">✅ 全部测试通过</div>
+                </div>
+                <div class="experiment-card">
+                    <div class="icon">🔧</div>
+                    <h3>真实 API</h3>
+                    <div class="score">492.1</div>
+                    <div class="winner">🥇 Shepherd 模式</div>
+                </div>
+                <div class="experiment-card">
+                    <div class="icon">🎬</div>
+                    <h3>视频引擎</h3>
+                    <div class="score">76.4</div>
+                    <div class="winner">🥇 Spiral 模式</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 详细对比 -->
+        <div class="section" style="animation-delay: 0.3s">
+            <h2 class="section-title"><span>📊</span> 实验详细对比</h2>
+            <div class="card">
+                <div class="progress-container">
+                    <div class="progress-row">
+                        <div class="progress-label">Shepherd</div>
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar" style="width: 100%">81.1</div>
+                        </div>
+                    </div>
+                    <div class="progress-row">
+                        <div class="progress-label">Agile</div>
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar" style="width: 99%">80.5</div>
+                        </div>
+                    </div>
+                    <div class="progress-row">
+                        <div class="progress-label">Waterfall</div>
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar" style="width: 71%">57.3</div>
+                        </div>
+                    </div>
+                    <div class="progress-row">
+                        <div class="progress-label">Chaotic</div>
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar" style="width: 43%">34.9</div>
+                        </div>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <tr>
+                        <th>模式</th>
+                        <th>综合评分</th>
+                        <th>工期</th>
+                        <th>质量</th>
+                        <th>完成率</th>
+                        <th>Bug率</th>
+                    </tr>
+                    <tr>
+                        <td class="rank-1">🥇 Shepherd</td>
+                        <td class="highlight-score">81.1</td>
+                        <td class="highlight-score">29.4天</td>
+                        <td class="highlight-score">0.91</td>
+                        <td class="highlight-score">92%</td>
+                        <td class="highlight-score">11%</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-2">🥈 Agile</td>
+                        <td>80.5</td>
+                        <td>38.0天</td>
+                        <td>0.83</td>
+                        <td>86%</td>
+                        <td>16%</td>
+                    </tr>
+                    <tr>
+                        <td class="rank-3">🥉 Waterfall</td>
+                        <td>57.3</td>
+                        <td>68.8天</td>
+                        <td>0.75</td>
+                        <td>72%</td>
+                        <td>24%</td>
+                    </tr>
+                    <tr>
+                        <td>4. Chaotic</td>
+                        <td>34.9</td>
+                        <td>76.0天</td>
+                        <td>0.35</td>
+                        <td>51%</td>
+                        <td>52%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 关键发现 -->
+        <div class="section" style="animation-delay: 0.4s">
+            <h2 class="section-title"><span>💡</span> 关键发现</h2>
+            <div class="findings-grid">
+                <div class="finding-card">
+                    <div class="number">01</div>
+                    <h4>Shepherd 模式最佳适用场景</h4>
+                    <p>在工程化项目中表现最佳（工期、质量、完成率），综合评分 81.1 领先。工期仅 29.4 天，比 Waterfall 快 2.3 倍。</p>
+                </div>
+                <div class="finding-card">
+                    <div class="number">02</div>
+                    <h4>Spiral 模式在前沿创新中的优势</h4>
+                    <p>在AI视频生成引擎项目中得分 76.4（最高），风险驱动+迭代模式适合高不确定性、高创新需求的场景。</p>
+                </div>
+                <div class="finding-card">
+                    <div class="number">03</div>
+                    <h4>Agile 模式的稳定表现</h4>
+                    <p>在所有实验中始终排名第二，表现稳定。适合快速变化、需求频繁调整的项目。</p>
+                </div>
+                <div class="finding-card">
+                    <div class="number">04</div>
+                    <h4>Waterfall 的局限性</h4>
+                    <p>工期最长（68.8天），且质量评分仅 0.75。在确定性项目中勉强可用，但效率极低。</p>
+                </div>
+                <div class="finding-card">
+                    <div class="number">05</div>
+                    <h4>Chaotic 模式完全失败</h4>
+                    <p>在所有场景下均表现最差，综合评分仅 34.9。无管理 = 失败，Bug 率高达 52%。</p>
+                </div>
+                <div class="finding-card">
+                    <div class="number">06</div>
+                    <h4>安全合规需改进</h4>
+                    <p>所有模式在 AI 安全/合规方面都有改进空间。视频引擎实验中安全专家评分普遍偏低。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 文档列表 -->
+        <div class="section" style="animation-delay: 0.5s">
+            <h2 class="section-title"><span>📚</span> 文档清单</h2>
+            <div class="card">
+                <ul class="styled-list">
+                    <li>牧羊人架构框架 - 设计白皮书 <span class="tag tag-doc">核心</span></li>
+                    <li>API 接口规范文档 <span class="tag tag-doc">技术</span></li>
+                    <li>实验方法论与评估标准 <span class="tag tag-doc">方法</span></li>
+                    <li>俄罗斯方块实验完整报告 <span class="tag tag-doc">实验</span></li>
+                    <li>计算机设计实验报告 <span class="tag tag-doc">实验</span></li>
+                    <li>真实 API 实验对比分析 <span class="tag tag-doc">实验</span></li>
+                    <li>视频引擎实验报告 <span class="tag tag-doc">实验</span></li>
+                    <li>技术设计书 (5份) <span class="tag tag-doc">设计</span></li>
+                    <li>架构对比与选型指南 <span class="tag tag-doc">指南</span></li>
+                    <li>部署与运维手册 <span class="tag tag-doc">运维</span></li>
+                    <li>安全合规检查清单 <span class="tag tag-doc">安全</span></li>
+                    <li>性能优化建议书 <span class="tag tag-doc">优化</span></li>
+                    <li>快速开始指南 <span class="tag tag-doc">入门</span></li>
+                    <li>贡献者指南 <span class="tag tag-doc">社区</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 脚本工具 -->
+        <div class="section" style="animation-delay: 0.6s">
+            <h2 class="section-title"><span>🛠️</span> 脚本工具集</h2>
+            <div class="card">
+                <ul class="styled-list">
+                    <li>experiment_runner.py <span class="tag tag-script">核心</span> — 实验运行器</li>
+                    <li>data_analyzer.py <span class="tag tag-script">分析</span> — 数据可视化分析</li>
+                    <li>metrics_collector.py <span class="tag tag-script">采集</span> — 性能指标采集</li>
+                    <li>report_generator.py <span class="tag tag-script">生成</span> — 报告自动生成</li>
+                    <li>api_validator.py <span class="tag tag-script">验证</span> — API 接口验证</li>
+                    <li>benchmark_suite.py <span class="tag tag-script">测试</span> — 基准测试套件</li>
+                    <li>config_manager.py <span class="tag tag-script">配置</span> — 配置管理工具</li>
+                    <li>log_processor.py <span class="tag tag-script">日志</span> — 日志处理器</li>
+                    <li>setup_env.sh <span class="tag tag-tool">环境</span> — 环境初始化脚本</li>
+                    <li>deploy.sh <span class="tag tag-tool">部署</span> — 自动化部署</li>
+                    <li>test_all.sh <span class="tag tag-tool">测试</span> — 全量测试</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 下一步 -->
+        <div class="section" style="animation-delay: 0.7s">
+            <h2 class="section-title"><span>🚀</span> 下一步计划</h2>
+            <div class="card">
+                <div class="steps-timeline">
+                    <div class="step-item">
+                        <h4>完善论文撰写</h4>
+                        <p>将实验结果整合为完整学术论文，补充理论论证与数学建模。</p>
+                        <span class="step-status status-active">进行中</span>
+                    </div>
+                    <div class="step-item">
+                        <h4>开源工具链开发</h4>
+                        <p>开发 Shepherd CLI 工具，支持项目初始化、模式选择、进度追踪。</p>
+                        <span class="step-status status-pending">待启动</span>
+                    </div>
+                    <div class="step-item">
+                        <h4>更多实验验证</h4>
+                        <p>在真实软件项目中进行更大规模验证（10+ 人月项目）。</p>
+                        <span class="step-status status-pending">待启动</span>
+                    </div>
+                    <div class="step-item">
+                        <h4>社区建设与推广</h4>
+                        <p>建立 GitHub 组织、编写教程、举办线上分享会。</p>
+                        <span class="step-status status-pending">规划中</span>
+                    </div>
+                    <div class="step-item">
+                        <h4>AI 安全专项研究</h4>
+                        <p>针对实验中暴露的安全合规短板，设计专项改进方案。</p>
+                        <span class="step-status status-pending">待启动</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🐑 牧羊人架构框架 · 综合项目展示</p>
+            <p>Project created on 2026-06-09 · 持续迭代中</p>
+            <div class="version-badge">v1.0.0-alpha · 128 files · 14,756 lines</div>
+        </div>
+    </div>
+</body>
+</html>

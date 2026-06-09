@@ -1,0 +1,1519 @@
+{
+  "timestamp": "2026-06-09T08:03:16.597Z",
+  "experiments": [
+    {
+      "task": "simple",
+      "teamSize": 2,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 2,
+          "sheepCount": 1,
+          "dogCount": 1,
+          "actualEffort": 13.6,
+          "quality": 0.81,
+          "communication": 0.73,
+          "satisfaction": 0.63,
+          "innovation": 0.59,
+          "completion": 0.904865539870456,
+          "bugRate": 0.11029848943934357
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 2,
+          "actualEffort": 31.1,
+          "quality": 0.75,
+          "communication": 0.62,
+          "satisfaction": 0.52,
+          "innovation": 0.39,
+          "completion": 0.7690577872388393,
+          "bugRate": 0.2990290534409757
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 2,
+          "actualEffort": 17.7,
+          "quality": 0.86,
+          "communication": 0.91,
+          "satisfaction": 0.88,
+          "innovation": 0.84,
+          "completion": 0.9015583649768433,
+          "bugRate": 0.11003897134319876
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 2,
+          "actualEffort": 21.5,
+          "quality": 0.47,
+          "communication": 0.39,
+          "satisfaction": 0.42,
+          "innovation": 0.2,
+          "completion": 0.640869611748015,
+          "bugRate": 0.5980996080013679
+        }
+      ]
+    },
+    {
+      "task": "simple",
+      "teamSize": 4,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 4,
+          "sheepCount": 3,
+          "dogCount": 1,
+          "actualEffort": 12,
+          "quality": 0.88,
+          "communication": 0.71,
+          "satisfaction": 0.8,
+          "innovation": 0.54,
+          "completion": 0.9476535295309828,
+          "bugRate": 0.13992009563069485
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 4,
+          "actualEffort": 31.9,
+          "quality": 0.82,
+          "communication": 0.54,
+          "satisfaction": 0.56,
+          "innovation": 0.4,
+          "completion": 0.8650605714512181,
+          "bugRate": 0.19701865803884547
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 4,
+          "actualEffort": 15.6,
+          "quality": 0.77,
+          "communication": 0.88,
+          "satisfaction": 0.95,
+          "innovation": 0.87,
+          "completion": 0.8957232600800622,
+          "bugRate": 0.17986089526994473
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 4,
+          "actualEffort": 25.4,
+          "quality": 0.23,
+          "communication": 0.22,
+          "satisfaction": 0.44,
+          "innovation": 0.11,
+          "completion": 0.5077361282182603,
+          "bugRate": 0.353677974361433
+        }
+      ]
+    },
+    {
+      "task": "simple",
+      "teamSize": 6,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 6,
+          "sheepCount": 4,
+          "dogCount": 2,
+          "actualEffort": 10.4,
+          "quality": 0.8,
+          "communication": 0.87,
+          "satisfaction": 0.94,
+          "innovation": 0.96,
+          "completion": 0.9071277412964698,
+          "bugRate": 0.07444164394360504
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 6,
+          "actualEffort": 30.5,
+          "quality": 0.87,
+          "communication": 0.41,
+          "satisfaction": 0.48,
+          "innovation": 0.49,
+          "completion": 0.7668158139873537,
+          "bugRate": 0.2252550865360579
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 6,
+          "actualEffort": 14.6,
+          "quality": 0.95,
+          "communication": 0.99,
+          "satisfaction": 0.97,
+          "innovation": 0.75,
+          "completion": 0.8848867710103129,
+          "bugRate": 0.1557663599137216
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 6,
+          "actualEffort": 49.8,
+          "quality": 0.23,
+          "communication": 0.36,
+          "satisfaction": 0.4,
+          "innovation": 0.27,
+          "completion": 0.5726337827368208,
+          "bugRate": 0.6528824136660356
+        }
+      ]
+    },
+    {
+      "task": "simple",
+      "teamSize": 8,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 8,
+          "sheepCount": 6,
+          "dogCount": 2,
+          "actualEffort": 12.2,
+          "quality": 0.82,
+          "communication": 0.62,
+          "satisfaction": 0.73,
+          "innovation": 0.58,
+          "completion": 0.8533781430260174,
+          "bugRate": 0.08698680982536572
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 8,
+          "actualEffort": 32.2,
+          "quality": 0.73,
+          "communication": 0.46,
+          "satisfaction": 0.69,
+          "innovation": 0.4,
+          "completion": 0.6019492629315041,
+          "bugRate": 0.3130267023303295
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 8,
+          "actualEffort": 17.5,
+          "quality": 0.84,
+          "communication": 0.95,
+          "satisfaction": 0.98,
+          "innovation": 0.6,
+          "completion": 0.9180641465974726,
+          "bugRate": 0.17176498068054763
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 8,
+          "actualEffort": 35.8,
+          "quality": 0.28,
+          "communication": 0.37,
+          "satisfaction": 0.43,
+          "innovation": 0.28,
+          "completion": 0.5007203422021629,
+          "bugRate": 0.4586682820017018
+        }
+      ]
+    },
+    {
+      "task": "simple",
+      "teamSize": 10,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 10,
+          "sheepCount": 8,
+          "dogCount": 2,
+          "actualEffort": 11.1,
+          "quality": 0.9,
+          "communication": 0.61,
+          "satisfaction": 0.82,
+          "innovation": 0.5,
+          "completion": 0.8719681618871226,
+          "bugRate": 0.07409052961465962
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 10,
+          "actualEffort": 26.1,
+          "quality": 0.82,
+          "communication": 0.62,
+          "satisfaction": 0.59,
+          "innovation": 0.44,
+          "completion": 0.7138521572812491,
+          "bugRate": 0.1505286854047945
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 10,
+          "actualEffort": 15,
+          "quality": 0.77,
+          "communication": 0.96,
+          "satisfaction": 0.82,
+          "innovation": 0.62,
+          "completion": 0.8986650669798113,
+          "bugRate": 0.16059447423208129
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 10,
+          "actualEffort": 43,
+          "quality": 0.5,
+          "communication": 0.34,
+          "satisfaction": 0.4,
+          "innovation": 0.14,
+          "completion": 0.5393748285254831,
+          "bugRate": 0.5089393699332463
+        }
+      ]
+    },
+    {
+      "task": "medium",
+      "teamSize": 2,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 2,
+          "sheepCount": 1,
+          "dogCount": 1,
+          "actualEffort": 23.3,
+          "quality": 0.85,
+          "communication": 0.88,
+          "satisfaction": 0.69,
+          "innovation": 0.61,
+          "completion": 0.9598072715691206,
+          "bugRate": 0.1271631511055138
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 2,
+          "actualEffort": 63.5,
+          "quality": 0.7,
+          "communication": 0.53,
+          "satisfaction": 0.6,
+          "innovation": 0.28,
+          "completion": 0.719934065895311,
+          "bugRate": 0.24876318806474812
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 2,
+          "actualEffort": 27.3,
+          "quality": 0.78,
+          "communication": 0.95,
+          "satisfaction": 1,
+          "innovation": 0.82,
+          "completion": 0.934887592489187,
+          "bugRate": 0.1679105651178659
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 2,
+          "actualEffort": 46.2,
+          "quality": 0.4,
+          "communication": 0.39,
+          "satisfaction": 0.33,
+          "innovation": 0.22,
+          "completion": 0.5937424799294613,
+          "bugRate": 0.4307711822087321
+        }
+      ]
+    },
+    {
+      "task": "medium",
+      "teamSize": 4,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 4,
+          "sheepCount": 3,
+          "dogCount": 1,
+          "actualEffort": 34.8,
+          "quality": 0.82,
+          "communication": 0.59,
+          "satisfaction": 0.95,
+          "innovation": 0.72,
+          "completion": 0.9565649715548012,
+          "bugRate": 0.11427425596531127
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 4,
+          "actualEffort": 59.1,
+          "quality": 0.72,
+          "communication": 0.5,
+          "satisfaction": 0.46,
+          "innovation": 0.3,
+          "completion": 0.617416945780181,
+          "bugRate": 0.32558774144127556
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 4,
+          "actualEffort": 36.8,
+          "quality": 0.82,
+          "communication": 0.9,
+          "satisfaction": 0.81,
+          "innovation": 0.78,
+          "completion": 0.8888411866640304,
+          "bugRate": 0.17676637489435088
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 4,
+          "actualEffort": 78.3,
+          "quality": 0.31,
+          "communication": 0.39,
+          "satisfaction": 0.23,
+          "innovation": 0.24,
+          "completion": 0.4926900299703885,
+          "bugRate": 0.39450492676573906
+        }
+      ]
+    },
+    {
+      "task": "medium",
+      "teamSize": 6,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 6,
+          "sheepCount": 4,
+          "dogCount": 2,
+          "actualEffort": 18.6,
+          "quality": 1.03,
+          "communication": 0.85,
+          "satisfaction": 0.76,
+          "innovation": 0.8,
+          "completion": 0.9153173428869094,
+          "bugRate": 0.14251389623381783
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 6,
+          "actualEffort": 57.9,
+          "quality": 0.68,
+          "communication": 0.55,
+          "satisfaction": 0.65,
+          "innovation": 0.25,
+          "completion": 0.6501026585648971,
+          "bugRate": 0.3322780832187702
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 6,
+          "actualEffort": 29.6,
+          "quality": 0.9,
+          "communication": 0.98,
+          "satisfaction": 0.85,
+          "innovation": 0.78,
+          "completion": 0.7552778747145753,
+          "bugRate": 0.1658306766187615
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 6,
+          "actualEffort": 59.9,
+          "quality": 0.48,
+          "communication": 0.39,
+          "satisfaction": 0.22,
+          "innovation": 0.11,
+          "completion": 0.3550416575791717,
+          "bugRate": 0.653860798455068
+        }
+      ]
+    },
+    {
+      "task": "medium",
+      "teamSize": 8,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 8,
+          "sheepCount": 6,
+          "dogCount": 2,
+          "actualEffort": 34.7,
+          "quality": 1.08,
+          "communication": 0.52,
+          "satisfaction": 0.71,
+          "innovation": 0.71,
+          "completion": 0.891740866308158,
+          "bugRate": 0.13812527422094906
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 8,
+          "actualEffort": 55.9,
+          "quality": 0.7,
+          "communication": 0.45,
+          "satisfaction": 0.69,
+          "innovation": 0.4,
+          "completion": 0.8947916024671192,
+          "bugRate": 0.1516407806255612
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 8,
+          "actualEffort": 31.6,
+          "quality": 0.81,
+          "communication": 0.83,
+          "satisfaction": 0.87,
+          "innovation": 0.84,
+          "completion": 0.7788806314415423,
+          "bugRate": 0.14022044780547233
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 8,
+          "actualEffort": 64.6,
+          "quality": 0.24,
+          "communication": 0.29,
+          "satisfaction": 0.44,
+          "innovation": 0.26,
+          "completion": 0.4682146295832385,
+          "bugRate": 0.6428174201060235
+        }
+      ]
+    },
+    {
+      "task": "medium",
+      "teamSize": 10,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 10,
+          "sheepCount": 8,
+          "dogCount": 2,
+          "actualEffort": 21.3,
+          "quality": 0.87,
+          "communication": 0.78,
+          "satisfaction": 0.67,
+          "innovation": 0.62,
+          "completion": 0.8790269042283373,
+          "bugRate": 0.09944699345231478
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 10,
+          "actualEffort": 61,
+          "quality": 0.68,
+          "communication": 0.65,
+          "satisfaction": 0.62,
+          "innovation": 0.44,
+          "completion": 0.6033126513163629,
+          "bugRate": 0.1833635542003101
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 10,
+          "actualEffort": 37.4,
+          "quality": 0.87,
+          "communication": 0.91,
+          "satisfaction": 0.85,
+          "innovation": 0.87,
+          "completion": 0.8765225599471915,
+          "bugRate": 0.12809229631509855
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 10,
+          "actualEffort": 46.3,
+          "quality": 0.22,
+          "communication": 0.36,
+          "satisfaction": 0.21,
+          "innovation": 0.3,
+          "completion": 0.5616016083835704,
+          "bugRate": 0.5700946314219323
+        }
+      ]
+    },
+    {
+      "task": "complex",
+      "teamSize": 2,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 2,
+          "sheepCount": 1,
+          "dogCount": 1,
+          "actualEffort": 51,
+          "quality": 0.96,
+          "communication": 0.84,
+          "satisfaction": 0.78,
+          "innovation": 0.88,
+          "completion": 0.9194003477987795,
+          "bugRate": 0.09496868576138352
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 2,
+          "actualEffort": 105.8,
+          "quality": 0.87,
+          "communication": 0.58,
+          "satisfaction": 0.69,
+          "innovation": 0.22,
+          "completion": 0.8704484224925154,
+          "bugRate": 0.2130433953506189
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 2,
+          "actualEffort": 56.1,
+          "quality": 0.79,
+          "communication": 0.87,
+          "satisfaction": 0.8,
+          "innovation": 0.68,
+          "completion": 0.834954191734594,
+          "bugRate": 0.15841877229507462
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 2,
+          "actualEffort": 166.5,
+          "quality": 0.39,
+          "communication": 0.22,
+          "satisfaction": 0.24,
+          "innovation": 0.19,
+          "completion": 0.5286414030065993,
+          "bugRate": 0.41975348834842724
+        }
+      ]
+    },
+    {
+      "task": "complex",
+      "teamSize": 4,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 4,
+          "sheepCount": 3,
+          "dogCount": 1,
+          "actualEffort": 44.2,
+          "quality": 0.83,
+          "communication": 0.89,
+          "satisfaction": 0.68,
+          "innovation": 0.89,
+          "completion": 0.9225896149920542,
+          "bugRate": 0.09171079215743662
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 4,
+          "actualEffort": 111.1,
+          "quality": 0.61,
+          "communication": 0.51,
+          "satisfaction": 0.51,
+          "innovation": 0.46,
+          "completion": 0.7095099038580106,
+          "bugRate": 0.2605927238595114
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 4,
+          "actualEffort": 53.3,
+          "quality": 0.81,
+          "communication": 0.93,
+          "satisfaction": 0.86,
+          "innovation": 0.63,
+          "completion": 0.8394052727685295,
+          "bugRate": 0.15384230078915118
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 4,
+          "actualEffort": 148.4,
+          "quality": 0.22,
+          "communication": 0.37,
+          "satisfaction": 0.37,
+          "innovation": 0.16,
+          "completion": 0.6317436713006044,
+          "bugRate": 0.5627480607460845
+        }
+      ]
+    },
+    {
+      "task": "complex",
+      "teamSize": 6,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 6,
+          "sheepCount": 4,
+          "dogCount": 2,
+          "actualEffort": 40.3,
+          "quality": 0.84,
+          "communication": 0.78,
+          "satisfaction": 0.91,
+          "innovation": 0.95,
+          "completion": 0.8719618562844785,
+          "bugRate": 0.1346634518610294
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 6,
+          "actualEffort": 122.5,
+          "quality": 0.78,
+          "communication": 0.5,
+          "satisfaction": 0.5,
+          "innovation": 0.22,
+          "completion": 0.7437095492176714,
+          "bugRate": 0.2583546374459993
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 6,
+          "actualEffort": 62.4,
+          "quality": 0.81,
+          "communication": 0.84,
+          "satisfaction": 0.93,
+          "innovation": 0.66,
+          "completion": 0.9110276280197903,
+          "bugRate": 0.18106799835626353
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 6,
+          "actualEffort": 96.9,
+          "quality": 0.42,
+          "communication": 0.22,
+          "satisfaction": 0.28,
+          "innovation": 0.22,
+          "completion": 0.3607507703598388,
+          "bugRate": 0.32534693096768164
+        }
+      ]
+    },
+    {
+      "task": "complex",
+      "teamSize": 8,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 8,
+          "sheepCount": 6,
+          "dogCount": 2,
+          "actualEffort": 63,
+          "quality": 1.04,
+          "communication": 0.53,
+          "satisfaction": 0.87,
+          "innovation": 0.94,
+          "completion": 0.9721017469012411,
+          "bugRate": 0.08983598151155658
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 8,
+          "actualEffort": 115.7,
+          "quality": 0.86,
+          "communication": 0.68,
+          "satisfaction": 0.46,
+          "innovation": 0.48,
+          "completion": 0.6744483903249097,
+          "bugRate": 0.28090549625876104
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 8,
+          "actualEffort": 76.1,
+          "quality": 0.87,
+          "communication": 0.89,
+          "satisfaction": 0.87,
+          "innovation": 0.88,
+          "completion": 0.8918706138189008,
+          "bugRate": 0.1675083478146996
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 8,
+          "actualEffort": 111.2,
+          "quality": 0.36,
+          "communication": 0.4,
+          "satisfaction": 0.27,
+          "innovation": 0.24,
+          "completion": 0.6052423632628257,
+          "bugRate": 0.5396370389978511
+        }
+      ]
+    },
+    {
+      "task": "complex",
+      "teamSize": 10,
+      "results": [
+        {
+          "methodology": "Shepherd",
+          "teamSize": 10,
+          "sheepCount": 8,
+          "dogCount": 2,
+          "actualEffort": 50,
+          "quality": 1.05,
+          "communication": 0.56,
+          "satisfaction": 0.69,
+          "innovation": 0.66,
+          "completion": 0.9887221607393624,
+          "bugRate": 0.11876789401156886
+        },
+        {
+          "methodology": "Waterfall",
+          "teamSize": 10,
+          "actualEffort": 127.9,
+          "quality": 0.67,
+          "communication": 0.66,
+          "satisfaction": 0.55,
+          "innovation": 0.49,
+          "completion": 0.6292245781064004,
+          "bugRate": 0.15549633286063275
+        },
+        {
+          "methodology": "Agile",
+          "teamSize": 10,
+          "actualEffort": 78.6,
+          "quality": 0.79,
+          "communication": 0.91,
+          "satisfaction": 0.86,
+          "innovation": 0.7,
+          "completion": 0.7620762076693761,
+          "bugRate": 0.159974474707728
+        },
+        {
+          "methodology": "Chaotic",
+          "teamSize": 10,
+          "actualEffort": 146,
+          "quality": 0.46,
+          "communication": 0.4,
+          "satisfaction": 0.25,
+          "innovation": 0.16,
+          "completion": 0.3571729659850831,
+          "bugRate": 0.6584862235612452
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "simple": {
+      "2": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 2,
+          "sheepCount": 1,
+          "dogCount": 1,
+          "actualEffort": 13.6,
+          "quality": 0.81,
+          "communication": 0.73,
+          "satisfaction": 0.63,
+          "innovation": 0.59,
+          "completion": 0.904865539870456,
+          "bugRate": 0.11029848943934357
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 2,
+          "actualEffort": 31.1,
+          "quality": 0.75,
+          "communication": 0.62,
+          "satisfaction": 0.52,
+          "innovation": 0.39,
+          "completion": 0.7690577872388393,
+          "bugRate": 0.2990290534409757
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 2,
+          "actualEffort": 17.7,
+          "quality": 0.86,
+          "communication": 0.91,
+          "satisfaction": 0.88,
+          "innovation": 0.84,
+          "completion": 0.9015583649768433,
+          "bugRate": 0.11003897134319876
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 2,
+          "actualEffort": 21.5,
+          "quality": 0.47,
+          "communication": 0.39,
+          "satisfaction": 0.42,
+          "innovation": 0.2,
+          "completion": 0.640869611748015,
+          "bugRate": 0.5980996080013679
+        }
+      },
+      "4": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 4,
+          "sheepCount": 3,
+          "dogCount": 1,
+          "actualEffort": 12,
+          "quality": 0.88,
+          "communication": 0.71,
+          "satisfaction": 0.8,
+          "innovation": 0.54,
+          "completion": 0.9476535295309828,
+          "bugRate": 0.13992009563069485
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 4,
+          "actualEffort": 31.9,
+          "quality": 0.82,
+          "communication": 0.54,
+          "satisfaction": 0.56,
+          "innovation": 0.4,
+          "completion": 0.8650605714512181,
+          "bugRate": 0.19701865803884547
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 4,
+          "actualEffort": 15.6,
+          "quality": 0.77,
+          "communication": 0.88,
+          "satisfaction": 0.95,
+          "innovation": 0.87,
+          "completion": 0.8957232600800622,
+          "bugRate": 0.17986089526994473
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 4,
+          "actualEffort": 25.4,
+          "quality": 0.23,
+          "communication": 0.22,
+          "satisfaction": 0.44,
+          "innovation": 0.11,
+          "completion": 0.5077361282182603,
+          "bugRate": 0.353677974361433
+        }
+      },
+      "6": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 6,
+          "sheepCount": 4,
+          "dogCount": 2,
+          "actualEffort": 10.4,
+          "quality": 0.8,
+          "communication": 0.87,
+          "satisfaction": 0.94,
+          "innovation": 0.96,
+          "completion": 0.9071277412964698,
+          "bugRate": 0.07444164394360504
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 6,
+          "actualEffort": 30.5,
+          "quality": 0.87,
+          "communication": 0.41,
+          "satisfaction": 0.48,
+          "innovation": 0.49,
+          "completion": 0.7668158139873537,
+          "bugRate": 0.2252550865360579
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 6,
+          "actualEffort": 14.6,
+          "quality": 0.95,
+          "communication": 0.99,
+          "satisfaction": 0.97,
+          "innovation": 0.75,
+          "completion": 0.8848867710103129,
+          "bugRate": 0.1557663599137216
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 6,
+          "actualEffort": 49.8,
+          "quality": 0.23,
+          "communication": 0.36,
+          "satisfaction": 0.4,
+          "innovation": 0.27,
+          "completion": 0.5726337827368208,
+          "bugRate": 0.6528824136660356
+        }
+      },
+      "8": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 8,
+          "sheepCount": 6,
+          "dogCount": 2,
+          "actualEffort": 12.2,
+          "quality": 0.82,
+          "communication": 0.62,
+          "satisfaction": 0.73,
+          "innovation": 0.58,
+          "completion": 0.8533781430260174,
+          "bugRate": 0.08698680982536572
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 8,
+          "actualEffort": 32.2,
+          "quality": 0.73,
+          "communication": 0.46,
+          "satisfaction": 0.69,
+          "innovation": 0.4,
+          "completion": 0.6019492629315041,
+          "bugRate": 0.3130267023303295
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 8,
+          "actualEffort": 17.5,
+          "quality": 0.84,
+          "communication": 0.95,
+          "satisfaction": 0.98,
+          "innovation": 0.6,
+          "completion": 0.9180641465974726,
+          "bugRate": 0.17176498068054763
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 8,
+          "actualEffort": 35.8,
+          "quality": 0.28,
+          "communication": 0.37,
+          "satisfaction": 0.43,
+          "innovation": 0.28,
+          "completion": 0.5007203422021629,
+          "bugRate": 0.4586682820017018
+        }
+      },
+      "10": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 10,
+          "sheepCount": 8,
+          "dogCount": 2,
+          "actualEffort": 11.1,
+          "quality": 0.9,
+          "communication": 0.61,
+          "satisfaction": 0.82,
+          "innovation": 0.5,
+          "completion": 0.8719681618871226,
+          "bugRate": 0.07409052961465962
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 10,
+          "actualEffort": 26.1,
+          "quality": 0.82,
+          "communication": 0.62,
+          "satisfaction": 0.59,
+          "innovation": 0.44,
+          "completion": 0.7138521572812491,
+          "bugRate": 0.1505286854047945
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 10,
+          "actualEffort": 15,
+          "quality": 0.77,
+          "communication": 0.96,
+          "satisfaction": 0.82,
+          "innovation": 0.62,
+          "completion": 0.8986650669798113,
+          "bugRate": 0.16059447423208129
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 10,
+          "actualEffort": 43,
+          "quality": 0.5,
+          "communication": 0.34,
+          "satisfaction": 0.4,
+          "innovation": 0.14,
+          "completion": 0.5393748285254831,
+          "bugRate": 0.5089393699332463
+        }
+      }
+    },
+    "medium": {
+      "2": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 2,
+          "sheepCount": 1,
+          "dogCount": 1,
+          "actualEffort": 23.3,
+          "quality": 0.85,
+          "communication": 0.88,
+          "satisfaction": 0.69,
+          "innovation": 0.61,
+          "completion": 0.9598072715691206,
+          "bugRate": 0.1271631511055138
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 2,
+          "actualEffort": 63.5,
+          "quality": 0.7,
+          "communication": 0.53,
+          "satisfaction": 0.6,
+          "innovation": 0.28,
+          "completion": 0.719934065895311,
+          "bugRate": 0.24876318806474812
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 2,
+          "actualEffort": 27.3,
+          "quality": 0.78,
+          "communication": 0.95,
+          "satisfaction": 1,
+          "innovation": 0.82,
+          "completion": 0.934887592489187,
+          "bugRate": 0.1679105651178659
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 2,
+          "actualEffort": 46.2,
+          "quality": 0.4,
+          "communication": 0.39,
+          "satisfaction": 0.33,
+          "innovation": 0.22,
+          "completion": 0.5937424799294613,
+          "bugRate": 0.4307711822087321
+        }
+      },
+      "4": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 4,
+          "sheepCount": 3,
+          "dogCount": 1,
+          "actualEffort": 34.8,
+          "quality": 0.82,
+          "communication": 0.59,
+          "satisfaction": 0.95,
+          "innovation": 0.72,
+          "completion": 0.9565649715548012,
+          "bugRate": 0.11427425596531127
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 4,
+          "actualEffort": 59.1,
+          "quality": 0.72,
+          "communication": 0.5,
+          "satisfaction": 0.46,
+          "innovation": 0.3,
+          "completion": 0.617416945780181,
+          "bugRate": 0.32558774144127556
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 4,
+          "actualEffort": 36.8,
+          "quality": 0.82,
+          "communication": 0.9,
+          "satisfaction": 0.81,
+          "innovation": 0.78,
+          "completion": 0.8888411866640304,
+          "bugRate": 0.17676637489435088
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 4,
+          "actualEffort": 78.3,
+          "quality": 0.31,
+          "communication": 0.39,
+          "satisfaction": 0.23,
+          "innovation": 0.24,
+          "completion": 0.4926900299703885,
+          "bugRate": 0.39450492676573906
+        }
+      },
+      "6": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 6,
+          "sheepCount": 4,
+          "dogCount": 2,
+          "actualEffort": 18.6,
+          "quality": 1.03,
+          "communication": 0.85,
+          "satisfaction": 0.76,
+          "innovation": 0.8,
+          "completion": 0.9153173428869094,
+          "bugRate": 0.14251389623381783
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 6,
+          "actualEffort": 57.9,
+          "quality": 0.68,
+          "communication": 0.55,
+          "satisfaction": 0.65,
+          "innovation": 0.25,
+          "completion": 0.6501026585648971,
+          "bugRate": 0.3322780832187702
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 6,
+          "actualEffort": 29.6,
+          "quality": 0.9,
+          "communication": 0.98,
+          "satisfaction": 0.85,
+          "innovation": 0.78,
+          "completion": 0.7552778747145753,
+          "bugRate": 0.1658306766187615
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 6,
+          "actualEffort": 59.9,
+          "quality": 0.48,
+          "communication": 0.39,
+          "satisfaction": 0.22,
+          "innovation": 0.11,
+          "completion": 0.3550416575791717,
+          "bugRate": 0.653860798455068
+        }
+      },
+      "8": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 8,
+          "sheepCount": 6,
+          "dogCount": 2,
+          "actualEffort": 34.7,
+          "quality": 1.08,
+          "communication": 0.52,
+          "satisfaction": 0.71,
+          "innovation": 0.71,
+          "completion": 0.891740866308158,
+          "bugRate": 0.13812527422094906
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 8,
+          "actualEffort": 55.9,
+          "quality": 0.7,
+          "communication": 0.45,
+          "satisfaction": 0.69,
+          "innovation": 0.4,
+          "completion": 0.8947916024671192,
+          "bugRate": 0.1516407806255612
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 8,
+          "actualEffort": 31.6,
+          "quality": 0.81,
+          "communication": 0.83,
+          "satisfaction": 0.87,
+          "innovation": 0.84,
+          "completion": 0.7788806314415423,
+          "bugRate": 0.14022044780547233
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 8,
+          "actualEffort": 64.6,
+          "quality": 0.24,
+          "communication": 0.29,
+          "satisfaction": 0.44,
+          "innovation": 0.26,
+          "completion": 0.4682146295832385,
+          "bugRate": 0.6428174201060235
+        }
+      },
+      "10": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 10,
+          "sheepCount": 8,
+          "dogCount": 2,
+          "actualEffort": 21.3,
+          "quality": 0.87,
+          "communication": 0.78,
+          "satisfaction": 0.67,
+          "innovation": 0.62,
+          "completion": 0.8790269042283373,
+          "bugRate": 0.09944699345231478
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 10,
+          "actualEffort": 61,
+          "quality": 0.68,
+          "communication": 0.65,
+          "satisfaction": 0.62,
+          "innovation": 0.44,
+          "completion": 0.6033126513163629,
+          "bugRate": 0.1833635542003101
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 10,
+          "actualEffort": 37.4,
+          "quality": 0.87,
+          "communication": 0.91,
+          "satisfaction": 0.85,
+          "innovation": 0.87,
+          "completion": 0.8765225599471915,
+          "bugRate": 0.12809229631509855
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 10,
+          "actualEffort": 46.3,
+          "quality": 0.22,
+          "communication": 0.36,
+          "satisfaction": 0.21,
+          "innovation": 0.3,
+          "completion": 0.5616016083835704,
+          "bugRate": 0.5700946314219323
+        }
+      }
+    },
+    "complex": {
+      "2": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 2,
+          "sheepCount": 1,
+          "dogCount": 1,
+          "actualEffort": 51,
+          "quality": 0.96,
+          "communication": 0.84,
+          "satisfaction": 0.78,
+          "innovation": 0.88,
+          "completion": 0.9194003477987795,
+          "bugRate": 0.09496868576138352
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 2,
+          "actualEffort": 105.8,
+          "quality": 0.87,
+          "communication": 0.58,
+          "satisfaction": 0.69,
+          "innovation": 0.22,
+          "completion": 0.8704484224925154,
+          "bugRate": 0.2130433953506189
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 2,
+          "actualEffort": 56.1,
+          "quality": 0.79,
+          "communication": 0.87,
+          "satisfaction": 0.8,
+          "innovation": 0.68,
+          "completion": 0.834954191734594,
+          "bugRate": 0.15841877229507462
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 2,
+          "actualEffort": 166.5,
+          "quality": 0.39,
+          "communication": 0.22,
+          "satisfaction": 0.24,
+          "innovation": 0.19,
+          "completion": 0.5286414030065993,
+          "bugRate": 0.41975348834842724
+        }
+      },
+      "4": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 4,
+          "sheepCount": 3,
+          "dogCount": 1,
+          "actualEffort": 44.2,
+          "quality": 0.83,
+          "communication": 0.89,
+          "satisfaction": 0.68,
+          "innovation": 0.89,
+          "completion": 0.9225896149920542,
+          "bugRate": 0.09171079215743662
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 4,
+          "actualEffort": 111.1,
+          "quality": 0.61,
+          "communication": 0.51,
+          "satisfaction": 0.51,
+          "innovation": 0.46,
+          "completion": 0.7095099038580106,
+          "bugRate": 0.2605927238595114
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 4,
+          "actualEffort": 53.3,
+          "quality": 0.81,
+          "communication": 0.93,
+          "satisfaction": 0.86,
+          "innovation": 0.63,
+          "completion": 0.8394052727685295,
+          "bugRate": 0.15384230078915118
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 4,
+          "actualEffort": 148.4,
+          "quality": 0.22,
+          "communication": 0.37,
+          "satisfaction": 0.37,
+          "innovation": 0.16,
+          "completion": 0.6317436713006044,
+          "bugRate": 0.5627480607460845
+        }
+      },
+      "6": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 6,
+          "sheepCount": 4,
+          "dogCount": 2,
+          "actualEffort": 40.3,
+          "quality": 0.84,
+          "communication": 0.78,
+          "satisfaction": 0.91,
+          "innovation": 0.95,
+          "completion": 0.8719618562844785,
+          "bugRate": 0.1346634518610294
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 6,
+          "actualEffort": 122.5,
+          "quality": 0.78,
+          "communication": 0.5,
+          "satisfaction": 0.5,
+          "innovation": 0.22,
+          "completion": 0.7437095492176714,
+          "bugRate": 0.2583546374459993
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 6,
+          "actualEffort": 62.4,
+          "quality": 0.81,
+          "communication": 0.84,
+          "satisfaction": 0.93,
+          "innovation": 0.66,
+          "completion": 0.9110276280197903,
+          "bugRate": 0.18106799835626353
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 6,
+          "actualEffort": 96.9,
+          "quality": 0.42,
+          "communication": 0.22,
+          "satisfaction": 0.28,
+          "innovation": 0.22,
+          "completion": 0.3607507703598388,
+          "bugRate": 0.32534693096768164
+        }
+      },
+      "8": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 8,
+          "sheepCount": 6,
+          "dogCount": 2,
+          "actualEffort": 63,
+          "quality": 1.04,
+          "communication": 0.53,
+          "satisfaction": 0.87,
+          "innovation": 0.94,
+          "completion": 0.9721017469012411,
+          "bugRate": 0.08983598151155658
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 8,
+          "actualEffort": 115.7,
+          "quality": 0.86,
+          "communication": 0.68,
+          "satisfaction": 0.46,
+          "innovation": 0.48,
+          "completion": 0.6744483903249097,
+          "bugRate": 0.28090549625876104
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 8,
+          "actualEffort": 76.1,
+          "quality": 0.87,
+          "communication": 0.89,
+          "satisfaction": 0.87,
+          "innovation": 0.88,
+          "completion": 0.8918706138189008,
+          "bugRate": 0.1675083478146996
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 8,
+          "actualEffort": 111.2,
+          "quality": 0.36,
+          "communication": 0.4,
+          "satisfaction": 0.27,
+          "innovation": 0.24,
+          "completion": 0.6052423632628257,
+          "bugRate": 0.5396370389978511
+        }
+      },
+      "10": {
+        "Shepherd": {
+          "methodology": "Shepherd",
+          "teamSize": 10,
+          "sheepCount": 8,
+          "dogCount": 2,
+          "actualEffort": 50,
+          "quality": 1.05,
+          "communication": 0.56,
+          "satisfaction": 0.69,
+          "innovation": 0.66,
+          "completion": 0.9887221607393624,
+          "bugRate": 0.11876789401156886
+        },
+        "Waterfall": {
+          "methodology": "Waterfall",
+          "teamSize": 10,
+          "actualEffort": 127.9,
+          "quality": 0.67,
+          "communication": 0.66,
+          "satisfaction": 0.55,
+          "innovation": 0.49,
+          "completion": 0.6292245781064004,
+          "bugRate": 0.15549633286063275
+        },
+        "Agile": {
+          "methodology": "Agile",
+          "teamSize": 10,
+          "actualEffort": 78.6,
+          "quality": 0.79,
+          "communication": 0.91,
+          "satisfaction": 0.86,
+          "innovation": 0.7,
+          "completion": 0.7620762076693761,
+          "bugRate": 0.159974474707728
+        },
+        "Chaotic": {
+          "methodology": "Chaotic",
+          "teamSize": 10,
+          "actualEffort": 146,
+          "quality": 0.46,
+          "communication": 0.4,
+          "satisfaction": 0.25,
+          "innovation": 0.16,
+          "completion": 0.3571729659850831,
+          "bugRate": 0.6584862235612452
+        }
+      }
+    }
+  },
+  "metadata": {
+    "totalExperiments": 15,
+    "tasks": 3,
+    "teamSizes": 5,
+    "methodologies": 4
+  }
+}

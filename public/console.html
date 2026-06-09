@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>牧羊人架构控制台 - Shepherd Architecture Console</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: calc(100vh - 65px);
+        }
+
+        .sidebar {
+            background: #1e293b;
+            border-right: 1px solid #334155;
+            padding: 1rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: #334155;
+        }
+
+        .nav-item.active {
+            background: #2563eb;
+            color: white;
+        }
+
+        .nav-icon {
+            font-size: 1.25rem;
+        }
+
+        .content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .panel {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        .panel-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .stat-value.success { color: #22c55e; }
+        .stat-value.warning { color: #f59e0b; }
+        .stat-value.danger { color: #ef4444; }
+        .stat-value.info { color: #60a5fa; }
+
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .task-item:hover {
+            border-color: #60a5fa;
+        }
+
+        .task-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .task-title {
+            font-weight: 600;
+        }
+
+        .task-meta {
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        .task-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .task-status.pending { background: #f59e0b20; color: #f59e0b; }
+        .task-status.in-progress { background: #60a5fa20; color: #60a5fa; }
+        .task-status.completed { background: #22c55e20; color: #22c55e; }
+        .task-status.failed { background: #ef444420; color: #ef4444; }
+
+        .agent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .agent-card {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+
+        .agent-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .agent-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .agent-info h4 {
+            font-size: 1rem;
+        }
+
+        .agent-info span {
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        .agent-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .agent-status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .agent-status-dot.idle { background: #22c55e; }
+        .agent-status-dot.busy { background: #f59e0b; }
+        .agent-status-dot.offline { background: #94a3b8; }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #334155;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-secondary {
+            background: #334155;
+            color: #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #475569;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            color: #e2e8f0;
+            font-size: 0.875rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #60a5fa;
+        }
+
+        .log-container {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .log-entry {
+            padding: 0.25rem 0;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .log-time {
+            color: #94a3b8;
+        }
+
+        .log-level {
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .log-level.info { color: #60a5fa; }
+        .log-level.warn { color: #f59e0b; }
+        .log-level.error { color: #ef4444; }
+        .log-level.success { color: #22c55e; }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🐑 牧羊人架构控制台</h1>
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>系统正常运行</span>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="nav-item active" data-panel="dashboard">
+                <span class="nav-icon">📊</span>
+                <span>仪表盘</span>
+            </div>
+            <div class="nav-item" data-panel="tasks">
+                <span class="nav-icon">📋</span>
+                <span>任务管理</span>
+            </div>
+            <div class="nav-item" data-panel="agents">
+                <span class="nav-icon">🤖</span>
+                <span>Agent 监控</span>
+            </div>
+            <div class="nav-item" data-panel="delegate">
+                <span class="nav-icon">📝</span>
+                <span>委托任务</span>
+            </div>
+            <div class="nav-item" data-panel="audit">
+                <span class="nav-icon">📜</span>
+                <span>审计日志</span>
+            </div>
+            <div class="nav-item" data-panel="logs">
+                <span class="nav-icon">📈</span>
+                <span>系统日志</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Dashboard Panel -->
+            <div id="dashboard-panel" class="panel-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">总任务数</div>
+                        <div class="stat-value info" id="stat-total-tasks">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">进行中</div>
+                        <div class="stat-value warning" id="stat-active-tasks">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">已完成</div>
+                        <div class="stat-value success" id="stat-completed-tasks">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Agent 数量</div>
+                        <div class="stat-value info" id="stat-agents">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">安全评分</div>
+                        <div class="stat-value success" id="stat-security">100%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">质量评分</div>
+                        <div class="stat-value warning" id="stat-quality">85%</div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">最近任务</span>
+                        <button class="btn btn-primary" onclick="showPanel('tasks')">查看全部</button>
+                    </div>
+                    <div class="task-list" id="recent-tasks">
+                        <!-- 动态填充 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tasks Panel -->
+            <div id="tasks-panel" class="panel-section hidden">
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">任务列表</span>
+                        <div>
+                            <button class="btn btn-secondary" onclick="filterTasks('all')">全部</button>
+                            <button class="btn btn-secondary" onclick="filterTasks('pending')">待处理</button>
+                            <button class="btn btn-secondary" onclick="filterTasks('in-progress')">进行中</button>
+                            <button class="btn btn-secondary" onclick="filterTasks('completed')">已完成</button>
+                        </div>
+                    </div>
+                    <div class="task-list" id="all-tasks">
+                        <!-- 动态填充 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agents Panel -->
+            <div id="agents-panel" class="panel-section hidden">
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Agent 集群</span>
+                        <button class="btn btn-primary" onclick="registerAgent()">注册 Agent</button>
+                    </div>
+                    <div class="agent-grid" id="agent-list">
+                        <!-- 动态填充 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delegate Panel -->
+            <div id="delegate-panel" class="panel-section hidden">
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">委托新任务</span>
+                    </div>
+                    <form id="delegate-form">
+                        <div class="form-group">
+                            <label class="form-label">任务标题</label>
+                            <input type="text" class="form-input" id="task-title" placeholder="例如：实现用户登录功能" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">任务描述</label>
+                            <textarea class="form-input" id="task-description" rows="4" placeholder="详细描述任务需求..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">标签（逗号分隔）</label>
+                            <input type="text" class="form-input" id="task-tags" placeholder="auth, security, api">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">优先级</label>
+                            <select class="form-input" id="task-priority">
+                                <option value="1">1 - 最低</option>
+                                <option value="2">2 - 低</option>
+                                <option value="3" selected>3 - 中</option>
+                                <option value="4">4 - 高</option>
+                                <option value="5">5 - 最高</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">提交委托</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Audit Panel -->
+            <div id="audit-panel" class="panel-section hidden">
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">审计日志</span>
+                        <button class="btn btn-secondary" onclick="verifyAuditChain()">验证完整性</button>
+                    </div>
+                    <div class="log-container" id="audit-logs">
+                        <!-- 动态填充 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logs Panel -->
+            <div id="logs-panel" class="panel-section hidden">
+                <div class="panel">
+                    <div class="panel-header">
+                        <span class="panel-title">系统日志</span>
+                    </div>
+                    <div class="log-container" id="system-logs">
+                        <div class="log-entry">
+                            <span class="log-time">[2026-06-09 08:30:15]</span>
+                            <span class="log-level success">SUCCESS</span>
+                            <span>系统初始化完成</span>
+                        </div>
+                        <div class="log-entry">
+                            <span class="log-time">[2026-06-09 08:30:16]</span>
+                            <span class="log-level info">INFO</span>
+                            <span>已注册 3 个 Agent</span>
+                        </div>
+                        <div class="log-entry">
+                            <span class="log-time">[2026-06-09 08:30:17]</span>
+                            <span class="log-level info">INFO</span>
+                            <span>WebSocket 服务器启动</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API 基础 URL
+        const API_BASE = window.location.origin + '/v1';
+        let ws = null;
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initNavigation();
+            loadDashboardData();
+            connectWebSocket();
+        });
+
+        // 导航切换
+        function initNavigation() {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    
+                    const panel = item.dataset.panel;
+                    showPanel(panel);
+                });
+            });
+        }
+
+        function showPanel(panelName) {
+            document.querySelectorAll('.panel-section').forEach(p => p.classList.add('hidden'));
+            document.getElementById(`${panelName}-panel`).classList.remove('hidden');
+            
+            if (panelName === 'tasks') loadTasks();
+            if (panelName === 'agents') loadAgents();
+            if (panelName === 'audit') loadAuditLogs();
+        }
+
+        // WebSocket 连接
+        function connectWebSocket() {
+            const wsUrl = `ws://${window.location.host}/v1/ws`;
+            ws = new WebSocket(wsUrl);
+
+            ws.onopen = () => {
+                console.log('WebSocket connected');
+                ws.send(JSON.stringify({ type: 'AUTH', token: 'mock-token' }));
+                ws.send(JSON.stringify({ type: 'SUBSCRIBE', channel: 'tasks' }));
+                ws.send(JSON.stringify({ type: 'SUBSCRIBE', channel: 'agents' }));
+                ws.send(JSON.stringify({ type: 'SUBSCRIBE', channel: 'alerts' }));
+            };
+
+            ws.onmessage = (event) => {
+                const message = JSON.parse(event.data);
+                handleWebSocketMessage(message);
+            };
+
+            ws.onerror = (error) => {
+                console.error('WebSocket error:', error);
+            };
+
+            ws.onclose = () => {
+                console.log('WebSocket disconnected, reconnecting...');
+                setTimeout(connectWebSocket, 5000);
+            };
+        }
+
+        function handleWebSocketMessage(message) {
+            switch (message.type) {
+                case 'AGENT_STATUS_UPDATE':
+                    updateAgentStatus(message.data);
+                    break;
+                case 'TASK_STATUS_CHANGED':
+                    loadTasks();
+                    break;
+                case 'ALERT':
+                    showAlert(message.data);
+                    break;
+                case 'HUMAN_INTERVENTION_REQUIRED':
+                    showInterventionRequest(message.data);
+                    break;
+            }
+        }
+
+        // 加载仪表盘数据
+        async function loadDashboardData() {
+            try {
+                const tasksRes = await fetch(`${API_BASE}/tasks`);
+                const tasksData = await tasksRes.json();
+                
+                const agentsRes = await fetch(`${API_BASE}/agents`);
+                const agentsData = await agentsRes.json();
+
+                document.getElementById('stat-total-tasks').textContent = tasksData.total || 0;
+                document.getElementById('stat-active-tasks').textContent = 
+                    tasksData.tasks.filter(t => t.status === 'IN_PROGRESS').length;
+                document.getElementById('stat-completed-tasks').textContent = 
+                    tasksData.tasks.filter(t => t.status === 'COMPLETED').length;
+                document.getElementById('stat-agents').textContent = agentsData.total || 0;
+
+                // 渲染最近任务
+                const recentTasks = tasksData.tasks.slice(0, 5);
+                const recentTasksEl = document.getElementById('recent-tasks');
+                recentTasksEl.innerHTML = recentTasks.map(task => renderTaskItem(task)).join('');
+            } catch (err) {
+                console.error('Failed to load dashboard:', err);
+            }
+        }
+
+        // 加载任务列表
+        async function loadTasks() {
+            try {
+                const res = await fetch(`${API_BASE}/tasks`);
+                const data = await res.json();
+                
+                const tasksEl = document.getElementById('all-tasks');
+                tasksEl.innerHTML = data.tasks.map(task => renderTaskItem(task)).join('');
+            } catch (err) {
+                console.error('Failed to load tasks:', err);
+            }
+        }
+
+        function renderTaskItem(task) {
+            const statusClass = task.status.toLowerCase().replace('_', '-');
+            const modeLabel = task.mode === 'AGENT' ? '🤖' : '👤';
+            
+            return `
+                <div class="task-item">
+                    <div class="task-info">
+                        <div class="task-title">${modeLabel} ${task.title}</div>
+                        <div class="task-meta">${task.description || '无描述'} | 优先级: ${task.priority}</div>
+                    </div>
+                    <span class="task-status ${statusClass}">${task.status}</span>
+                </div>
+            `;
+        }
+
+        function filterTasks(status) {
+            // 实现任务过滤
+            console.log('Filter tasks:', status);
+        }
+
+        // 加载 Agent 列表
+        async function loadAgents() {
+            try {
+                const res = await fetch(`${API_BASE}/agents`);
+                const data = await res.json();
+                
+                const agentsEl = document.getElementById('agent-list');
+                agentsEl.innerHTML = data.agents.map(agent => renderAgentCard(agent)).join('');
+            } catch (err) {
+                console.error('Failed to load agents:', err);
+            }
+        }
+
+        function renderAgentCard(agent) {
+            const statusClass = agent.status.toLowerCase();
+            const levelColors = {
+                'STRATEGIC': '🔮',
+                'TACTICAL': '⚡',
+                'EXECUTIVE': '🔧'
+            };
+            
+            return `
+                <div class="agent-card">
+                    <div class="agent-header">
+                        <div class="agent-avatar">${levelColors[agent.level] || '🤖'}</div>
+                        <div class="agent-info">
+                            <h4>${agent.name}</h4>
+                            <span>${agent.level} Level</span>
+                        </div>
+                    </div>
+                    <div class="agent-status">
+                        <span class="agent-status-dot ${statusClass}"></span>
+                        <span>${agent.status}</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${agent.status === 'BUSY' ? '65%' : '0%'}"></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateAgentStatus(data) {
+            // 更新 Agent 状态显示
+            console.log('Agent status update:', data);
+        }
+
+        function registerAgent() {
+            alert('Agent 注册功能待实现');
+        }
+
+        // 委托表单
+        document.getElementById('delegate-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const task = {
+                title: document.getElementById('task-title').value,
+                description: document.getElementById('task-description').value,
+                tags: document.getElementById('task-tags').value.split(',').map(t => t.trim()).filter(Boolean),
+                priority: parseInt(document.getElementById('task-priority').value),
+            };
+
+            try {
+                const res = await fetch(`${API_BASE}/tasks/delegate`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(task),
+                });
+
+                const result = await res.json();
+                
+                if (result.error) {
+                    alert(`委托失败: ${result.error.message}`);
+                } else {
+                    alert(`任务已委托！模式: ${result.mode}`);
+                    showPanel('tasks');
+                    loadTasks();
+                }
+            } catch (err) {
+                alert('委托失败: ' + err.message);
+            }
+        });
+
+        // 加载审计日志
+        async function loadAuditLogs() {
+            try {
+                const res = await fetch(`${API_BASE}/audit/logs`);
+                const data = await res.json();
+                
+                const logsEl = document.getElementById('audit-logs');
+                logsEl.innerHTML = data.logs.map(log => `
+                    <div class="log-entry">
+                        <span class="log-time">[${new Date(log.timestamp).toLocaleString()}]</span>
+                        <span class="log-level ${log.actor.type === 'HUMAN' ? 'warn' : 'info'}">${log.actor.type}</span>
+                        <span>${log.action.type} → ${log.action.target}</span>
+                    </div>
+                `).join('');
+            } catch (err) {
+                console.error('Failed to load audit logs:', err);
+            }
+        }
+
+        async function verifyAuditChain() {
+            try {
+                const res = await fetch(`${API_BASE}/audit/verify`);
+                const data = await res.json();
+                
+                alert(`审计链验证: ${data.valid ? '通过' : '失败'}\n记录数: ${data.recordCount}`);
+            } catch (err) {
+                alert('验证失败: ' + err.message);
+            }
+        }
+
+        // 警报显示
+        function showAlert(alert) {
+            console.warn('Alert:', alert);
+        }
+
+        // 人类介入请求
+        function showInterventionRequest(data) {
+            const decision = confirm(`任务 "${data.taskId}" 需要人类介入:\n${data.reason}\n\n是否批准继续？`);
+            
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({
+                    type: 'INTERVENTION_RESPONSE',
+                    taskId: data.taskId,
+                    decision: decision ? 'APPROVE' : 'REJECT',
+                }));
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+[project]
+name = "牧羊人架构框架"
+version = "1.0.0-alpha"
+date = "2026-06-09"
+status = "Alpha"
+license = "MIT"
+
+[stats]
+files = 133
+docs = 41
+scripts = 27
+examples = 14
+tests = 8
+code_lines = 14913
+doc_words = 32603
+growth = 166
+
+[[experiments]]
+name = "俄罗斯方块对比"
+best = "Shepherd"
+score = 81.1
+
+[[experiments]]
+name = "计算机设计"
+best = "5/5通过"
+score = 46.2
+
+[[experiments]]
+name = "真实API对比"
+best = "Shepherd"
+score = 492.1
+
+[[experiments]]
+name = "AI视频引擎"
+best = "Spiral"
+score = 76.4
+
+[docs]
+list = [
+  "THESIS.md",
+  "PAPER_FULL.md",
+  "COMPREHENSIVE_REPORT.md",
+  "FINAL_REPORT.md",
+  "MILESTONES.md",
+  "MILESTONE_150.md",
+  "MILESTONE_160.md",
+  "QUICKSTART.md",
+  "INSTALLATION.md",
+  "DEPLOYMENT.md",
+  "FAQ.md",
+  "ARCHITECTURE.md",
+  "API_DESIGN.md",
+  "DATA_MODEL.md",
+  "SHOWCASE.md",
+  "FINAL_SUMMARY.md"
+]
+
+[scripts]
+list = [
+  "experiment.js",
+  "computer_design.js",
+  "real_api_experiment.js",
+  "video_engine_experiment.js",
+  "project_stats.js",
+  "showcase.js",
+  "export_data.js",
+  "visualize.js",
+  "backup.js",
+  "verify.js",
+  "export_json.js",
+  "export_markdown.js",
+  "export_csv.js"
+]
+
+[key_findings]
+findings = [
+  "Shepherd在工程化项目中最佳",
+  "Spiral在前沿创新项目中最佳",
+  "Agile在所有项目中稳定第二",
+  "真实API验证了模拟结果",
+  "所有模式在AI安全方面都有改进空间",
+  "Chaotic在所有场景下都表现最差"
+]

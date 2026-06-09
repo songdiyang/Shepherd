@@ -1,0 +1,54 @@
+{
+  "title": "Shepherd Architecture Framework",
+  "description": "A human-AI collaborative software engineering framework",
+  "keywords": ["AI", "human-AI collaboration", "software engineering", "framework"],
+  "author": "Shepherd Architecture Team",
+  "version": "1.0.0-alpha",
+  "license": "MIT",
+  "repository": "https://github.com/shepherd-team/shepherd-architecture",
+  "docs": {
+    "index": "README.md",
+    "thesis": "docs/THESIS.md",
+    "paper": "docs/PAPER_FULL.md",
+    "quickstart": "docs/QUICKSTART.md",
+    "architecture": "docs/ARCHITECTURE.md",
+    "api": "docs/API_DESIGN.md",
+    "deployment": "docs/DEPLOYMENT.md",
+    "faq": "docs/FAQ.md"
+  },
+  "experiments": {
+    "tetris": "scripts/experiment.js",
+    "computer": "scripts/computer_design.js",
+    "api": "scripts/real_api_comparison.js",
+    "video": "scripts/video_engine_batch.js"
+  },
+  "examples": {
+    "user-management": "examples/user-management",
+    "microservices": "examples/microservices",
+    "legacy-refactoring": "examples/legacy-refactoring",
+    "ai-integration": "examples/ai-integration",
+    "tetris": "examples/tetris/comparison.html",
+    "data-processing": "examples/data-processing",
+    "reports": "examples/reports/comprehensive_report.html"
+  },
+  "scripts": {
+    "stats": "scripts/project_stats.js",
+    "benchmark": "scripts/benchmark.js",
+    "ecommerce": "scripts/ecommerce_experiment.js"
+  },
+  "config": {
+    "docker": "docker-compose.yml",
+    "nginx": "config/nginx/nginx.conf",
+    "prometheus": "config/prometheus/prometheus.yml",
+    "grafana": "config/grafana/dashboards/shepherd-dashboard.json",
+    "ci": ".github/workflows/ci.yml"
+  },
+  "stats": {
+    "files": 114,
+    "directories": 29,
+    "size": "1.2 MB",
+    "codeLines": 13728,
+    "docWords": 30750,
+    "growth": "128%"
+  }
+}

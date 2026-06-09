@@ -1,0 +1,7 @@
+Name,Type,Grass,Reputation
+AI CPU Designer,AI,301,70
+AI Memory Designer,AI,0,0
+AI I/O Designer,AI,0,0
+AI Bus Designer,AI,0,0
+Human Architect,HUMAN,46,10
+Human Tester,HUMAN,158,40

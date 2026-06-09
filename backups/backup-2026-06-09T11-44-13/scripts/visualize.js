@@ -1,0 +1,95 @@
+/**
+ * 数据可视化脚本
+ * 生成实验数据可视化图表（HTML）
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+const RESULTS_DIR = path.join(__dirname, '..', 'simulation_results');
+const OUTPUT_DIR = path.join(__dirname, '..', 'exports');
+
+function generateVisualization() {
+  const html = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验数据可视化</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; text-align: center; }
+        .chart { background: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background: #667eea; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .bar { height: 20px; background: #667eea; border-radius: 10px; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 实验数据可视化</h1>
+        
+        <div class="chart">
+            <h2>俄罗斯方块实验 - 四种模式对比</h2>
+            <table>
+                <tr><th>模式</th><th>综合评分</th><th>工期</th><th>质量</th><th>完成率</th><th>Bug率</th></tr>
+                <tr><td>Shepherd</td><td>81.1</td><td>29.4天</td><td>0.91</td><td>92%</td><td>11%</td></tr>
+                <tr><td>Agile</td><td>80.5</td><td>38.0天</td><td>0.83</td><td>86%</td><td>16%</td></tr>
+                <tr><td>Waterfall</td><td>57.3</td><td>68.8天</td><td>0.75</td><td>72%</td><td>24%</td></tr>
+                <tr><td>Chaotic</td><td>34.9</td><td>76.0天</td><td>0.35</td><td>51%</td><td>52%</td></tr>
+            </table>
+        </div>
+        
+        <div class="chart">
+            <h2>真实API实验 - 四种模式对比</h2>
+            <table>
+                <tr><th>模式</th><th>耗时</th><th>API调用</th><th>质量</th><th>综合评分</th></tr>
+                <tr><td>Shepherd</td><td>13.4s</td><td>6</td><td>0.86</td><td>492.1</td></tr>
+                <tr><td>Agile</td><td>14.1s</td><td>5</td><td>0.82</td><td>483.1</td></tr>
+                <tr><td>Waterfall</td><td>17.3s</td><td>5</td><td>0.75</td><td>449.5</td></tr>
+                <tr><td>Chaotic</td><td>23.1s</td><td>5</td><td>0.50</td><td>384.0</td></tr>
+            </table>
+        </div>
+        
+        <div class="chart">
+            <h2>AI视频生成引擎 - 五种模式对比</h2>
+            <table>
+                <tr><th>排名</th><th>模式</th><th>平均</th><th>AI专家</th><th>架构专家</th><th>工程专家</th><th>产品专家</th><th>安全专家</th></tr>
+                <tr><td>🥇</td><td>Spiral</td><td>76.4</td><td>82</td><td>82</td><td>75</td><td>78</td><td>65</td></tr>
+                <tr><td>🥈</td><td>Agile</td><td>76.2</td><td>85</td><td>82</td><td>68</td><td>78</td><td>68</td></tr>
+                <tr><td>🥉</td><td>Shepherd</td><td>71.6</td><td>82</td><td>78</td><td>68</td><td>75</td><td>55</td></tr>
+                <tr><td>4</td><td>Waterfall</td><td>71.6</td><td>78</td><td>78</td><td>68</td><td>82</td><td>52</td></tr>
+                <tr><td>5</td><td>Chaotic</td><td>52.8</td><td>82</td><td>-</td><td>55</td><td>82</td><td>45</td></tr>
+            </table>
+        </div>
+        
+        <div class="chart">
+            <h2>计算机设计实验</h2>
+            <table>
+                <tr><th>指标</th><th>数值</th></tr>
+                <tr><td>完成任务</td><td>12/26</td></tr>
+                <tr><td>完成率</td><td>46.2%</td></tr>
+                <tr><td>平均质量</td><td>0.85</td></tr>
+                <tr><td>测试通过</td><td>5/5 ✅</td></tr>
+            </table>
+        </div>
+        
+        <p style="text-align: center; color: #666; margin-top: 30px;">
+            牧羊人架构框架 v1.0.0-alpha | 2026-06-09
+        </p>
+    </div>
+</body>
+</html>`;
+  
+  fs.writeFileSync(path.join(OUTPUT_DIR, 'visualization.html'), html);
+  console.log('✅ 可视化图表已生成');
+}
+
+if (require.main === module) {
+  generateVisualization();
+}
+
+module.exports = { generateVisualization };

@@ -1,0 +1,181 @@
+{
+  "timestamp": "2026-06-09T09:15:31.028Z",
+  "modes": [
+    {
+      "mode": "Shepherd",
+      "results": [
+        {
+          "task": "系统架构",
+          "role": "架构师",
+          "duration": 2.152,
+          "quality": 0.9,
+          "result": "采用API网关统一入口，按业务域拆分服务（如用户、订单、商品）。服务间通过轻量级REST/gRPC通信，使用消息队列（Kafka）解耦异步任务。引入服务注册与发现（Consul）、配置中心（Nacos）及分布式追踪（Jaeger）。数据独立存储，通过事件驱动维护最终一致性。容器化部署（K8s），支持弹性伸缩与熔断降级。"
+        },
+        {
+          "task": "API开发",
+          "role": "后端工程师",
+          "duration": 3.22,
+          "quality": 0.85,
+          "result": "```javascript\nconst express = require('express');\nconst app = express();\napp.use(express.json());\n\n// 模拟数据库\nlet users = [{ id: 1, name: 'Alice', email: 'alice@example.com' }];\nlet nextId = 2;\n\n// 获取所有"
+        },
+        {
+          "task": "前端页面",
+          "role": "前端工程师",
+          "duration": 2.543,
+          "quality": 0.85,
+          "result": "```jsx\n// LoginPage.jsx\nimport React, { useState } from 'react';\n\nconst LoginPage = () => {\n  const [form, setForm] = useState({ username: '', password: '' });\n\n  const handleChange = (e) => {\n    set"
+        },
+        {
+          "task": "部署配置",
+          "role": "DevOps",
+          "duration": 2.422,
+          "quality": 0.85,
+          "result": "**Docker 部署配置方案**\n\n1. **Dockerfile**  \n```dockerfile\nFROM node:18-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --only=production\nCOPY . .\nEXPOSE 3000\nCMD [\"node\", \"server.js\"]\n```\n\n2. **.docke"
+        },
+        {
+          "task": "测试用例",
+          "role": "测试工程师",
+          "duration": 3.036,
+          "quality": 0.85,
+          "result": "**测试用例设计方案**  \n\n1. **功能测试**：覆盖核心流程（如登录、搜索、提交订单），包含正常、异常边界值（空输入、超长字符、无效数据）。  \n2. **兼容性测试**：验证主流浏览器（Chrome/Firefox/Safari/Edge）及移动端（iOS/Android）不同分辨率。  \n3. **性能测试**：基准负载（100并发用户）、压力测试（峰值200并发）、稳定性（持续运行4"
+        }
+      ],
+      "apiCalls": 6,
+      "totalTime": 13.373,
+      "avgQuality": 0.86,
+      "score": 492.07000000000005
+    },
+    {
+      "mode": "Agile",
+      "results": [
+        {
+          "task": "系统架构",
+          "role": "架构师",
+          "duration": 2.672,
+          "quality": 0.82,
+          "result": "**微服务架构方案：**\n\n采用领域驱动设计（DDD）划分服务，核心包括：\n- **API网关**：统一入口，路由、鉴权、限流。\n- **业务服务**：用户、订单、库存、支付等独立部署，通过REST/gRPC通信。\n- **基础设施**：服务注册与发现（Consul）、配置中心（Nacos）、分布式追踪（Jaeger）。\n- **数据存储**：每个服务独立数据库（MySQL/PostgreSQL）"
+        },
+        {
+          "task": "API开发",
+          "role": "后端工程师",
+          "duration": 3.783,
+          "quality": 0.82,
+          "result": "```javascript\n// server.js\nconst express = require('express');\nconst app = express();\napp.use(express.json());\n\n// 内存数据存储\nlet users = [];\nlet idCounter = 1;\n\n// 获取所有用户\napp.get('/api/users', (req, res)"
+        },
+        {
+          "task": "前端页面",
+          "role": "前端工程师",
+          "duration": 2.189,
+          "quality": 0.82,
+          "result": "```jsx\nimport { useState } from 'react';\n\nexport default function LoginPage() {\n  const [form, setForm] = useState({ email: '', password: '' });\n\n  const handleSubmit = (e) => {\n    e.preventDefault()"
+        },
+        {
+          "task": "部署配置",
+          "role": "DevOps",
+          "duration": 2.864,
+          "quality": 0.82,
+          "result": "**Docker 部署方案（简洁版）**  \n1. **Dockerfile**  \n   - 基于轻量基础镜像（如 `alpine`）  \n   - 复制应用代码，设置工作目录  \n   - 暴露端口，定义启动命令（`CMD` 或 `ENTRYPOINT`）  \n\n2. **docker-compose.yml**（多服务场景）  \n   - 定义服务（如 `web`、`db`）  \n   - "
+        },
+        {
+          "task": "测试用例",
+          "role": "测试工程师",
+          "duration": 2.642,
+          "quality": 0.82,
+          "result": "**测试用例编写方案**\n\n1. **需求分析**：梳理Sprint用户故事，明确功能点、边界条件和异常场景。\n2. **用例设计方法**：等价类划分（有效/无效输入）、边界值分析（如数值上下限）、场景法（主成功路径+备选路径）、错误推测法。\n3. **用例结构**：包含ID、模块、前置条件、测试步骤、预期结果、优先级（P0-P3）。\n4. **评审与维护**：组织团队评审，确保覆盖率；测试执行后"
+        }
+      ],
+      "apiCalls": 5,
+      "totalTime": 14.149999999999999,
+      "avgQuality": 0.82,
+      "score": 483.1
+    },
+    {
+      "mode": "Waterfall",
+      "results": [
+        {
+          "task": "系统架构",
+          "role": "架构师",
+          "duration": 3.951,
+          "quality": 0.75,
+          "result": "**微服务架构设计文档**\n\n**一、架构概览**  \n采用领域驱动设计（DDD）拆分服务，核心服务包括：用户服务（认证/权限）、订单服务（交易流程）、商品服务（库存/目录）、支付服务（三方集成）、通知服务（消息推送）。服务间通过RESTful API（同步）与消息队列（异步，如Kafka）解耦。\n\n**二、关键技术**  \n- **服务治理**：Kubernetes部署，Nacos实现注册发现与"
+        },
+        {
+          "task": "API开发",
+          "role": "后端工程师",
+          "duration": 2.993,
+          "quality": 0.75,
+          "result": "## 用户API实现方案\n\n采用Express + MongoDB + JWT实现RESTful用户API，包含：\n\n**核心模块：**\n- 用户模型（name, email, password, avatar, role, createdAt）\n- 认证中间件（JWT token验证）\n- 密码加密（bcryptjs）\n\n**API端点：**\n```\nPOST   /api/users/regi"
+        },
+        {
+          "task": "前端页面",
+          "role": "前端工程师",
+          "duration": 3.36,
+          "quality": 0.75,
+          "result": "## 登录页面实现方案\n\n采用React + TypeScript + Ant Design组件库实现。页面包含：\n- 品牌Logo和标题展示区\n- 表单：用户名/邮箱、密码输入框，带“记住我”复选框\n- 登录按钮（带loading状态）\n- 底部操作：注册链接、忘记密码\n\n**核心逻辑**：\n1. 使用Form组件绑定表单数据，配置rules进行非空和格式校验\n2. 封装登录API请求（axio"
+        },
+        {
+          "task": "部署配置",
+          "role": "DevOps",
+          "duration": 3.767,
+          "quality": 0.75,
+          "result": "## Docker 部署配置方案\n\n采用多阶段构建优化镜像体积，配置如下：\n\n### 1. Dockerfile 示例\n```dockerfile\n# 构建阶段\nFROM golang:1.20-alpine AS builder\nWORKDIR /app\nCOPY go.mod go.sum ./\nRUN go mod download\nCOPY . .\nRUN CGO_ENABLED=0 GO"
+        },
+        {
+          "task": "测试用例",
+          "role": "测试工程师",
+          "duration": 3.231,
+          "quality": 0.75,
+          "result": "**测试方案：**\n\n本测试针对[待测试功能/模块]进行，采用等价类划分、边界值分析和场景法设计测试用例。测试阶段分为功能验证、异常处理、性能基准及兼容性检查。首先，覆盖正常业务流（如输入有效参数、触发核心操作），验证输出结果符合预期；其次，构造无效/边界数据（如空值、超长字符、负数、零值）检查系统错误提示与容错机制；接着，模拟高并发或大数据量场景（如同时发起100次请求）确认响应时间与资源消耗；"
+        }
+      ],
+      "apiCalls": 5,
+      "totalTime": 17.302,
+      "avgQuality": 0.75,
+      "score": 449.48
+    },
+    {
+      "mode": "Chaotic",
+      "results": [
+        {
+          "task": "前端页面",
+          "role": "前端工程师",
+          "duration": 6.354,
+          "quality": 0.5,
+          "result": "这是为您开发的React登录页面组件代码。它包含邮箱和密码输入框，并提供了“记住我”选项与登录按钮，整体风格简洁实用。\n```jsx\nimport React, { useState } from 'react';\nimport './Login.css'; // 假设有对应的样式文件\n\nconst Login = () => {\n  const [email, setEmail] = useSt"
+        },
+        {
+          "task": "API开发",
+          "role": "后端工程师",
+          "duration": 3.93,
+          "quality": 0.5,
+          "result": "```javascript\nconst express = require('express');\nconst app = express();\napp.use(express.json());\n\n// 模拟数据库\nlet users = [\n  { id: 1, name: '张三', email: 'zhangsan@example.com' },\n  { id: 2, name: '李四',"
+        },
+        {
+          "task": "系统架构",
+          "role": "架构师",
+          "duration": 2.321,
+          "quality": 0.5,
+          "result": "采用基于领域的微服务架构。核心服务包括：用户服务（认证、权限）、订单服务（交易管理）、库存服务（实时更新）、通知服务（邮件/推送）。服务间通过轻量级REST API或gRPC通信，使用API网关统一入口，结合消息队列（如RabbitMQ）处理异步事件（如订单确认）。数据独立存储（每个服务专属数据库），用Docker+Kubernetes部署，实现弹性伸缩与故障隔离。"
+        },
+        {
+          "task": "测试用例",
+          "role": "测试工程师",
+          "duration": 5.238,
+          "quality": 0.5,
+          "result": "**测试用例：用户登录功能**\n\n**用例编号**：TC-LOGIN-001  \n**测试标题**：用户使用有效账号和密码成功登录  \n**前置条件**：用户已注册账号，账号状态为“正常”  \n**测试步骤**：  \n1. 打开登录页面  \n2. 输入有效用户名“test_user”  \n3. 输入对应密码“Pass123!”  \n4. 点击“登录”按钮  \n**预期结果**：  \n- 页面跳转至"
+        },
+        {
+          "task": "部署配置",
+          "role": "DevOps",
+          "duration": 5.254,
+          "quality": 0.5,
+          "result": "好的，作为你的DevOps工程师，为你提供一个基础但结构清晰的Docker部署配置。假设我们要部署一个简单的Node.js web应用。\n\n首先，项目根目录下创建 `Dockerfile`：\n\n```dockerfile\n# 使用官方Node.js镜像作为基础\nFROM node:16-alpine\n\n# 设置工作目录\nWORKDIR /usr/src/app\n\n# 复制package.json和"
+        }
+      ],
+      "apiCalls": 5,
+      "totalTime": 23.097,
+      "avgQuality": 0.5,
+      "score": 384.03
+    }
+  ]
+}

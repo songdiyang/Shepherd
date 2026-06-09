@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俄罗斯方块 - 牧羊人架构实验</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .game-area {
+            text-align: center;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #60a5fa;
+        }
+        canvas {
+            border: 2px solid #334155;
+            border-radius: 8px;
+            background: #1e293b;
+        }
+        .info {
+            margin-top: 15px;
+            padding: 15px;
+            background: #1e293b;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+        .controls {
+            margin-top: 15px;
+            padding: 15px;
+            background: #1e293b;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+        .controls h3 {
+            margin-top: 0;
+            font-size: 1em;
+        }
+        .controls p {
+            font-size: 0.85em;
+            margin: 5px 0;
+            color: #94a3b8;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+        .btn-primary { background: #60a5fa; color: #fff; }
+        .btn-primary:hover { background: #3b82f6; }
+        .btn-secondary { background: #334155; color: #e2e8f0; }
+        .btn-secondary:hover { background: #475569; }
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.85em;
+        }
+        .status-info { background: #1e3a5f; color: #60a5fa; }
+        .status-success { background: #1e3f2e; color: #34d399; }
+        .status-warning { background: #3f3f1e; color: #fbbf24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="game-area">
+            <h1>🎮 俄罗斯方块</h1>
+            <canvas id="tetris" width="300" height="600"></canvas>
+            <div class="info">
+                <div class="info-row">
+                    <span>得分:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="info-row">
+                    <span>消除行:</span>
+                    <span id="lines">0</span>
+                </div>
+                <div class="info-row">
+                    <span>等级:</span>
+                    <span id="level">1</span>
+                </div>
+            </div>
+            <div class="controls">
+                <h3>🎮 控制</h3>
+                <p>← → 移动 | ↑ 旋转 | ↓ 加速</p>
+                <p>P 暂停 | R 重置</p>
+                <button class="btn btn-primary" onclick="game.reset()">重置</button>
+                <button class="btn btn-secondary" onclick="game.pause()">暂停</button>
+            </div>
+            <div id="status" class="status status-info">
+                准备开始 - 按方向键控制
+            </div>
+        </div>
+    </div>
+
+    <script src="tetris.js"></script>
+    <script>
+        const game = new TetrisGame('tetris', {
+            width: 300,
+            height: 600,
+            blockSize: 30
+        });
+        
+        // 键盘控制
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowLeft': game.left(); break;
+                case 'ArrowRight': game.right(); break;
+                case 'ArrowDown': game.down(); break;
+                case 'ArrowUp': game.rotate(); break;
+                case 'p':
+                case 'P': game.pause(); break;
+                case 'r':
+                case 'R': game.reset(); break;
+            }
+        });
+        
+        // 更新显示
+        function updateDisplay() {
+            const state = game.getState();
+            document.getElementById('score').textContent = state.score;
+            document.getElementById('lines').textContent = state.lines;
+            document.getElementById('level').textContent = state.level;
+            
+            const status = document.getElementById('status');
+            if (state.gameOver) {
+                status.textContent = '游戏结束! 最终得分: ' + state.score;
+                status.className = 'status status-warning';
+            } else if (state.paused) {
+                status.textContent = '游戏暂停';
+                status.className = 'status status-info';
+            } else {
+                status.textContent = '游戏进行中 - 等级 ' + state.level;
+                status.className = 'status status-success';
+            }
+        }
+        
+        // 每100ms更新一次显示
+        setInterval(updateDisplay, 100);
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+{
+  "dashboard": {
+    "title": "Shepherd Architecture - 系统监控",
+    "tags": ["shepherd", "monitoring"],
+    "timezone": "Asia/Shanghai",
+    "panels": [
+      {
+        "title": "API 请求速率",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(shepherd_api_requests_total[5m])",
+            "legendFormat": "{{method}} {{endpoint}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+      },
+      {
+        "title": "API 响应时间",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(shepherd_api_request_duration_seconds_bucket[5m]))",
+            "legendFormat": "95th percentile"
+          },
+          {
+            "expr": "histogram_quantile(0.50, rate(shepherd_api_request_duration_seconds_bucket[5m]))",
+            "legendFormat": "50th percentile"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+      },
+      {
+        "title": "羊状态分布",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "shepherd_sheep_status_count",
+            "legendFormat": "{{status}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 8}
+      },
+      {
+        "title": "牧羊犬活动",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(shepherd_dog_actions_total[5m])",
+            "legendFormat": "{{dog_id}} {{action_type}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 8}
+      },
+      {
+        "title": "草奖励消耗",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(shepherd_grass_consumed_total[5m])",
+            "legendFormat": "{{sheep_id}}"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 8}
+      },
+      {
+        "title": "任务完成率",
+        "type": "gauge",
+        "targets": [
+          {
+            "expr": "shepherd_task_completion_rate",
+            "legendFormat": "完成率"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 8}
+      },
+      {
+        "title": "系统资源使用",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100",
+            "legendFormat": "内存可用 %"
+          },
+          {
+            "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+            "legendFormat": "CPU使用率 %"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16}
+      },
+      {
+        "title": "MongoDB 连接数",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "mongodb_connections{state=\"current\"}",
+            "legendFormat": "当前连接"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16}
+      }
+    ],
+    "refresh": "30s",
+    "time": {"from": "now-1h", "to": "now"}
+  }
+}

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>牧羊人架构 - 综合实验可视化报告</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .experiment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .experiment-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .experiment-card h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .experiment-card .score {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .experiment-card .winner {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #667eea;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .rank-1 { color: #FFD700; font-weight: bold; }
+        .rank-2 { color: #C0C0C0; font-weight: bold; }
+        .rank-3 { color: #CD7F32; font-weight: bold; }
+        .chart-bar {
+            height: 30px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: bold;
+            margin: 5px 0;
+            transition: width 1s ease;
+        }
+        .chart-container {
+            margin: 20px 0;
+        }
+        .chart-row {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        .chart-label {
+            width: 100px;
+            font-weight: 600;
+        }
+        .chart-bar-wrapper {
+            flex: 1;
+            margin-left: 10px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        .conclusion-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .conclusion-box h3 {
+            margin-bottom: 10px;
+        }
+        .conclusion-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .conclusion-box li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .conclusion-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐑 牧羊人架构框架</h1>
+        <p class="subtitle">综合实验可视化报告 | 2026-06-09</p>
+
+        <div class="card">
+            <h2>📊 实验概览</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">大型实验</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">工作模式</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">170</div>
+                    <div class="stat-label">API调用</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">25</div>
+                    <div class="stat-label">产出文件</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🏆 实验结果汇总</h2>
+            <div class="experiment-grid">
+                <div class="experiment-card">
+                    <h3>🎮 俄罗斯方块</h3>
+                    <div class="score">81.1</div>
+                    <div class="winner">🥇 Shepherd</div>
+                </div>
+                <div class="experiment-card">
+                    <h3>💻 计算机设计</h3>
+                    <div class="score">5/5</div>
+                    <div class="winner">✅ 测试通过</div>
+                </div>
+                <div class="experiment-card">
+                    <h3>🔧 真实API</h3>
+                    <div class="score">492.1</div>
+                    <div class="winner">🥇 Shepherd</div>
+                </div>
+                <div class="experiment-card">
+                    <h3>🎬 视频引擎</h3>
+                    <div class="score">76.4</div>
+                    <div class="winner">🥇 Spiral</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📈 俄罗斯方块实验对比</h2>
+            <div class="chart-container">
+                <div class="chart-row">
+                    <div class="chart-label">Shepherd</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 100%">81.1</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Agile</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 99%">80.5</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Waterfall</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 71%">57.3</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Chaotic</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 43%">34.9</div>
+                    </div>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <th>模式</th>
+                    <th>综合评分</th>
+                    <th>工期</th>
+                    <th>质量</th>
+                    <th>完成率</th>
+                    <th>Bug率</th>
+                </tr>
+                <tr>
+                    <td class="rank-1">🥇 Shepherd</td>
+                    <td class="highlight">81.1</td>
+                    <td class="highlight">29.4天</td>
+                    <td class="highlight">0.91</td>
+                    <td class="highlight">92%</td>
+                    <td class="highlight">11%</td>
+                </tr>
+                <tr>
+                    <td class="rank-2">🥈 Agile</td>
+                    <td>80.5</td>
+                    <td>38.0天</td>
+                    <td>0.83</td>
+                    <td>86%</td>
+                    <td>16%</td>
+                </tr>
+                <tr>
+                    <td class="rank-3">🥉 Waterfall</td>
+                    <td>57.3</td>
+                    <td>68.8天</td>
+                    <td>0.75</td>
+                    <td>72%</td>
+                    <td>24%</td>
+                </tr>
+                <tr>
+                    <td>4 Chaotic</td>
+                    <td>34.9</td>
+                    <td>76.0天</td>
+                    <td>0.35</td>
+                    <td>51%</td>
+                    <td>52%</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>🎬 AI视频生成引擎设计对比</h2>
+            <div class="chart-container">
+                <div class="chart-row">
+                    <div class="chart-label">Spiral</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 100%">76.4</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Agile</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 99%">76.2</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Shepherd</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 94%">71.6</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Waterfall</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 94%">71.6</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Chaotic</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 69%">52.8</div>
+                    </div>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <th>排名</th>
+                    <th>模式</th>
+                    <th>平均</th>
+                    <th>AI专家</th>
+                    <th>架构专家</th>
+                    <th>工程专家</th>
+                    <th>产品专家</th>
+                    <th>安全专家</th>
+                </tr>
+                <tr>
+                    <td class="rank-1">🥇</td>
+                    <td class="rank-1">Spiral</td>
+                    <td class="highlight">76.4</td>
+                    <td>82</td>
+                    <td>82</td>
+                    <td>75</td>
+                    <td>78</td>
+                    <td>65</td>
+                </tr>
+                <tr>
+                    <td class="rank-2">🥈</td>
+                    <td class="rank-2">Agile</td>
+                    <td>76.2</td>
+                    <td>85</td>
+                    <td>82</td>
+                    <td>68</td>
+                    <td>78</td>
+                    <td>68</td>
+                </tr>
+                <tr>
+                    <td class="rank-3">🥉</td>
+                    <td class="rank-3">Shepherd</td>
+                    <td>71.6</td>
+                    <td>82</td>
+                    <td>78</td>
+                    <td>68</td>
+                    <td>75</td>
+                    <td>55</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Waterfall</td>
+                    <td>71.6</td>
+                    <td>78</td>
+                    <td>78</td>
+                    <td>68</td>
+                    <td>82</td>
+                    <td>52</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Chaotic</td>
+                    <td>52.8</td>
+                    <td>82</td>
+                    <td>-</td>
+                    <td>55</td>
+                    <td>82</td>
+                    <td>45</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>💻 计算机设计实验</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">12/26</div>
+                    <div class="stat-label">完成任务</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">46.2%</div>
+                    <div class="stat-label">完成率</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">0.85</div>
+                    <div class="stat-label">平均质量</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">5/5</div>
+                    <div class="stat-label">测试通过</div>
+                </div>
+            </div>
+            <p style="margin-top: 15px;">设计的简化计算机系统：1KB内存、7个寄存器、22条指令集。所有测试通过：加法✅ 减法✅ 乘法✅ 逻辑与✅ 左移位✅</p>
+        </div>
+
+        <div class="card">
+            <h2>🔧 真实API实验对比</h2>
+            <div class="chart-container">
+                <div class="chart-row">
+                    <div class="chart-label">Shepherd</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 100%">492.1</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Agile</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 98%">483.1</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Waterfall</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 91%">449.5</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">Chaotic</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 78%">384.0</div>
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top: 15px;">使用DeepSeek API真实调用，5名AI团队成员生成实际代码和架构方案。</p>
+        </div>
+
+        <div class="conclusion-box">
+            <h3>📋 关键结论</h3>
+            <ul>
+                <li><strong>Shepherd</strong>在工程化项目中表现最佳（工期、质量、完成率）</li>
+                <li><strong>Spiral</strong>在前沿创新项目中表现最佳（风险驱动+迭代）</li>
+                <li><strong>Agile</strong>在快速变化项目中表现稳定（始终第二）</li>
+                <li><strong>Waterfall</strong>在确定性项目中可用（但效率低）</li>
+                <li><strong>Chaotic</strong>在所有场景下都表现最差（无管理=失败）</li>
+                <li>所有模式在AI安全/合规方面都有改进空间</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>📁 数据文件</h2>
+            <table>
+                <tr>
+                    <th>文件</th>
+                    <th>大小</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td>experiment_1780992196597.json</td>
+                    <td>42.5KB</td>
+                    <td>俄罗斯方块实验数据</td>
+                </tr>
+                <tr>
+                    <td>computer_design_*.json</td>
+                    <td>1KB×4</td>
+                    <td>计算机设计实验数据</td>
+                </tr>
+                <tr>
+                    <td>real_api_comparison_*.json</td>
+                    <td>11.2KB</td>
+                    <td>真实API对比数据</td>
+                </tr>
+                <tr>
+                    <td>video_engine_experiment_*.json</td>
+                    <td>5KB</td>
+                    <td>视频引擎实验数据</td>
+                </tr>
+                <tr>
+                    <td>techdoc_*.md</td>
+                    <td>13-22KB</td>
+                    <td>5份技术设计书</td>
+                </tr>
+            </table>
+        </div>
+
+        <p style="text-align: center; color: rgba(255,255,255,0.8); margin-top: 30px;">
+            牧羊人架构框架 v1.0.0-alpha | 2026-06-09 | 综合实验报告
+        </p>
+    </div>
+</body>
+</html>

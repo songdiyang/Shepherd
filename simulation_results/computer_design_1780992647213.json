@@ -1,0 +1,57 @@
+{
+  "project": "简化计算机系统",
+  "totalTasks": 26,
+  "completedTasks": 0,
+  "completionRate": 0,
+  "averageQuality": null,
+  "sheep": [
+    {
+      "name": "AI CPU Designer",
+      "type": "AI",
+      "grass": 0,
+      "reputation": 0
+    },
+    {
+      "name": "AI Memory Designer",
+      "type": "AI",
+      "grass": 0,
+      "reputation": 0
+    },
+    {
+      "name": "AI I/O Designer",
+      "type": "AI",
+      "grass": 0,
+      "reputation": 0
+    },
+    {
+      "name": "AI Bus Designer",
+      "type": "AI",
+      "grass": 0,
+      "reputation": 0
+    },
+    {
+      "name": "Human Architect",
+      "type": "HUMAN",
+      "grass": 0,
+      "reputation": 0
+    },
+    {
+      "name": "Human Tester",
+      "type": "HUMAN",
+      "grass": 0,
+      "reputation": 0
+    }
+  ],
+  "dogs": [
+    {
+      "name": "AI Hardware Manager",
+      "type": "AI",
+      "flockSize": 3
+    },
+    {
+      "name": "Human Software Manager",
+      "type": "HUMAN",
+      "flockSize": 3
+    }
+  ]
+}

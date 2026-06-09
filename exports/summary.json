@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-06-09T11:47:36.796Z",
+  "version": "1.0.0-alpha",
+  "experiments": {
+    "tetris": {
+      "name": "俄罗斯方块对比",
+      "modes": [
+        "Shepherd",
+        "Agile",
+        "Waterfall",
+        "Chaotic"
+      ],
+      "simulations": 15,
+      "best": "Shepherd",
+      "score": 81.1
+    },
+    "computer": {
+      "name": "计算机设计",
+      "team": "6羊2犬",
+      "tasks": 26,
+      "completed": 12,
+      "completionRate": 46.2,
+      "tests": "5/5通过"
+    },
+    "realApi": {
+      "name": "真实API对比",
+      "modes": [
+        "Shepherd",
+        "Agile",
+        "Waterfall",
+        "Chaotic"
+      ],
+      "apiCalls": 170,
+      "best": "Shepherd",
+      "score": 492.1
+    },
+    "videoEngine": {
+      "name": "AI视频引擎",
+      "modes": [
+        "Shepherd",
+        "Agile",
+        "Waterfall",
+        "Chaotic",
+        "Spiral"
+      ],
+      "teams": 5,
+      "membersPerTeam": 6,
+      "experts": 5,
+      "best": "Spiral",
+      "score": 76.4
+    }
+  },
+  "project": {
+    "files": 123,
+    "docs": 38,
+    "scripts": 21,
+    "examples": 13,
+    "tests": 8,
+    "codeLines": 14343,
+    "docWords": 31601,
+    "growth": 146
+  }
+}
