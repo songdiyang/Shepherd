@@ -8,9 +8,9 @@
 
 ![Version](https://img.shields.io/badge/version-1.0.0--alpha-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Files](https://img.shields.io/badge/files-148-orange)
-![Docs](https://img.shields.io/badge/docs-55-lightgrey)
-![Growth](https://img.shields.io/badge/growth-+196%25-brightgreen)
+![Files](https://img.shields.io/badge/files-137-orange)
+![Docs](https://img.shields.io/badge/docs-44-lightgrey)
+![Growth](https://img.shields.io/badge/growth-+174%25-brightgreen)
 ![Code](https://img.shields.io/badge/code-15.0K-blueviolet)
 ![API](https://img.shields.io/badge/API-DeepSeek-blueviolet)
 
